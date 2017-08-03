@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Stage Web</display-name>
+	<servlet>
+
+		<servlet-name>cs</servlet-name>
+		<servlet-class>it.synclab.servlet.Controller</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cs</servlet-name>
+		<url-pattern>/controller</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CandidateCreateServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.CandidateCreateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CandidateCreateServlet</servlet-name>
+		<url-pattern>/candidateCreateServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CandidateListServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.CandidateListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CandidateListServlet</servlet-name>
+		<url-pattern>/candidateListServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CandidateUpdateServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.CandidateUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CandidateUpdateServlet</servlet-name>
+		<url-pattern>/candidateUpdateServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CandidateDeleteServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.CandidateDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CandidateDeleteServlet</servlet-name>
+		<url-pattern>/candidateDeleteServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>EvaluationCreateServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.EvaluationCreateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EvaluationCreateServlet</servlet-name>
+		<url-pattern>/evaluationCreateServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>EvaluationUpdateServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.EvaluationUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EvaluationUpdateServlet</servlet-name>
+		<url-pattern>/evaluationUpdateServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SkillsCreateServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.SkillsCreateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SkillsCreateServlet</servlet-name>
+		<url-pattern>/skillsCreateServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SkillsUpdateServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.SkillsUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SkillsUpdateServlet</servlet-name>
+		<url-pattern>/skillsUpdateServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>OriginCreateServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.OriginCreateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OriginCreateServlet</servlet-name>
+		<url-pattern>/originCreateServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>OriginUpdateServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.OriginUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OriginUpdateServlet</servlet-name>
+		<url-pattern>/originUpdateServlet</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
