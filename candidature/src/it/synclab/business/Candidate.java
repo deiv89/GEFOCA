@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.*;
 //X commit di test ciauuuu
 //ulteriore commento per Augustin
+//test augustin
 @Entity
 @Table(name = "CANDIDATE")
 public class Candidate {
