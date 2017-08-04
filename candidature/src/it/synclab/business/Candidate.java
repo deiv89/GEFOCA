@@ -3,7 +3,7 @@ package it.synclab.business;
 import java.util.List;
 
 import javax.persistence.*;
-
+//X commit di test ciauuuu
 @Entity
 @Table(name = "CANDIDATE")
 public class Candidate {
