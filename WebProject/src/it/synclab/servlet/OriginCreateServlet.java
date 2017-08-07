@@ -10,12 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.synclab.business.Candidate;
 import it.synclab.business.CandidateFactory;
 import it.synclab.business.Origin;
-import it.synclab.exception.CandidateNotFoundException;
-import it.synclab.exception.EmptyCandidateListException;
-import it.synclab.service.ICandidateService;
 import it.synclab.service.IOriginService;
 
 @WebServlet("/OriginCreateServlet")
@@ -46,13 +42,13 @@ public class OriginCreateServlet extends HttpServlet {
 				origin.setPhone(request.getParameter("phone"));
 
 				String surname = request.getParameter("surname");
-				
+
 				currentOrigin = originService.create(origin);
-				
-				//non accetta int
+
+				// non accetta int
 				String idCandidateString = request.getParameter("idCandidate");
 				int idCandidate = Integer.parseInt(idCandidateString);
-				
+
 				originService.updateIdOriginCandidate(idCandidate, currentOrigin.getIdOrigin());
 
 				if (currentOrigin != null) {
@@ -60,18 +56,14 @@ public class OriginCreateServlet extends HttpServlet {
 					request.setAttribute("message", "Candidato " + surname + " salvato con successo!");
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/CandidateListServlet");
 					rd.forward(request, response);
-				} else {
-					request.setAttribute("message", "ERRORE: Creazione canale provenienza non riuscita");
-					request.getRequestDispatcher("/originCreate.jsp").forward(request, response);
 				}
-
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
-				request.setAttribute("message", e);
+				request.setAttribute("message", "ERRORE: Creazione canale provenienza non riuscita");
 				request.getRequestDispatcher("/originCreate.jsp").forward(request, response);
 			}
-		}
 
+		}
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

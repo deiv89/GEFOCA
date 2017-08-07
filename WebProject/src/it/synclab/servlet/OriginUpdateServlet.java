@@ -10,12 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.synclab.business.Candidate;
 import it.synclab.business.CandidateFactory;
 import it.synclab.business.Origin;
-import it.synclab.exception.CandidateNotFoundException;
-import it.synclab.exception.EmptyCandidateListException;
-import it.synclab.service.ICandidateService;
 import it.synclab.service.IOriginService;
 
 @WebServlet("/OriginUpdateServlet")
@@ -48,7 +44,7 @@ public class OriginUpdateServlet extends HttpServlet {
 			if (currentOrigin != null) {
 				request.setAttribute("surname", surname);
 				request.setAttribute("message", "Candidato " + surname + " salvato con successo!");
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/CandidateListServlet");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/CandidateDetailServlet");
 				rd.forward(request, response);
 			} else {
 				request.setAttribute("message", "ERRORE: Creazione canale provenienza non riuscita");

@@ -91,7 +91,11 @@ public class JPASkills implements ISkillsService {
 			
 			@SuppressWarnings("unchecked")
 			ArrayList<Candidate_Skills> skillsCandidates = (ArrayList<Candidate_Skills>) entityManager.createQuery("from Candidate_Skills WHERE id_candidate = :idCandidate").setParameter("idCandidate", idCandidate).getResultList();
-			entityManager.remove(skillsCandidates);
+			
+			for(Candidate_Skills cSkill: skillsCandidates){
+				entityManager.remove(cSkill);
+			}
+			
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();

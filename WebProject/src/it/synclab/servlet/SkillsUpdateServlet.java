@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.synclab.business.CandidateFactory;
 import it.synclab.business.Candidate_Skills;
-import it.synclab.business.Language;
 import it.synclab.business.Skills;
 import it.synclab.service.ISkillsService;
 import it.synclab.utilities.ParameterUtility;

@@ -2,6 +2,7 @@ package it.synclab.jpa;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.persistence.*;
 
@@ -187,7 +188,11 @@ public class JPAEvaluationForm implements IEvaluationFormService {
 			
 			@SuppressWarnings("unchecked")
 			ArrayList<Candidate_Languages> candidateLanguages = (ArrayList<Candidate_Languages>) entityManager.createQuery("from Candidate_Languages WHERE id_candidate = :idCandidate").setParameter("idCandidate", idCandidate).getResultList();
-			entityManager.remove(candidateLanguages);
+			
+			for(Candidate_Languages cLang: candidateLanguages){
+				entityManager.remove(cLang);
+			}
+			
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();

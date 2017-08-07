@@ -36,13 +36,13 @@ public class Candidate {
 	@Transient
 	private List<Candidate_Skills> skills;
 	
-	@OneToMany()
+	/*@OneToMany()
 	@JoinColumn(name = "ID_CANDIDATE")	
 	private List<Candidate_Skills> skillRels;
 	
 	@OneToMany()
 	@JoinColumn(name = "ID_CANDIDATE")	
-	private List<Candidate_Languages> spokenLanguages;
+	private List<Candidate_Languages> spokenLanguages;*/
 
 	
 	
@@ -102,7 +102,7 @@ public class Candidate {
 		this.skills = skills;
 	}
 
-	public List<Candidate_Skills> getSkillRels() {
+	/*public List<Candidate_Skills> getSkillRels() {
 		return skillRels;
 	}
 
@@ -116,6 +116,6 @@ public class Candidate {
 
 	public void setSpokenLanguages(List<Candidate_Languages> spokenLanguages) {
 		this.spokenLanguages = spokenLanguages;
-	}
+	}*/
 
 }
