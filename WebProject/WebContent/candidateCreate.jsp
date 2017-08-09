@@ -4,15 +4,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Candidature WebApp</title>
-<link rel="stylesheet" type="text/css" href="resources/candidateCreateCSS.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/candidateCreateCSS.css">
 </head>
 <body>
 	<h1>Crea nuovo Candidato</h1>
 	<br>
 	<br>
-	<p><strong>${message}</strong></p>
+	<p>
+		<strong>${message}</strong>
+		<strong>${messageFile}</strong>
+	</p>
 	<br>
-	<form action="candidateCreateServlet" method="post">
+	<form action="candidateCreateServlet" method="post"
+		enctype="multipart/form-data">
 		<table>
 			<tr>
 				<td>Nome:</td>
@@ -30,20 +35,21 @@
 				<td>Qualificazione:</td>
 				<td><input type="text" name="qualification" /></td>
 			</tr>
+			<tr>
+				<input type="file" name="pathCv" size="60" accept=".pdf,.docx,.doc"/>
+				<p class="help-block">Tipi di file supportati: PDF E WORD</p>
+			</tr>
 			<br>
 			<tr>
-				<td colspan="2"><input type="submit" class="forward" value="Avanti &nbsp; >>" />
-				<input
-					type="hidden" name="surname" value="surname"></td>
+				<td colspan="2"><input type="submit" class="forward"
+					value="Avanti &nbsp; >>" /> <input type="hidden" name="surname"
+					value="surname"></td>
 			</tr>
 		</table>
 	</form>
-	
-<!-- 	<br> -->
-<!-- 	<a href="evaluationFormCreate.jsp">TEMP: VAI A EVALUATION FORM</a> -->
 
 	<br>
 	<a href="CandidateListServlet">ANNULLA E TORNA INDIETRO</a>
-	
+
 </body>
 </html>
