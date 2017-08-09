@@ -73,13 +73,12 @@ public class EvaluationCreateServlet extends HttpServlet {
 				eform.setLevelPresence(ParameterUtility.getIntValue(request, "levelPresence", 0));
 				eform.setLevelDynamicity(ParameterUtility.getIntValue(request, "levelDynamicity", 0));
 				eform.setLevelComunication(ParameterUtility.getIntValue(request, "levelComunication", 0));
-
 				eform.setExperience(request.getParameter("experience"));
 				eform.setMotivazioni(request.getParameter("motivation"));
 				eform.setTransfer(request.getParameter("transfer"));
+				eform.setAvailability(request.getParameter("availability"));
 				
 //				 <%=request.getParameter("item_" + count.index)%>
-
 				for (int i = 0; i < languagesList.size(); i++) {
 					lang = new Candidate_Languages();
 					lang.setIdCandidate(idCandidate);

@@ -3,11 +3,13 @@ package it.synclab.business;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "SKILLS_MATRIX")
+@Table(name = "SKILLS")
 public class Skills {
 	
 	@Transient
@@ -17,14 +19,21 @@ public class Skills {
 	@Column(name = "ID_SKILL")
 	private int idSkill;
 	
+	@ManyToOne
+	@JoinColumn(name="ID_SCOPE")
+	private Scope idScope;
+	
+	/*@Column(name = "ID_SCOPE")
+	private int idScope;*/
+	
 	@Column(name = "SKILL_NAME")
 	private String parameterName;
 	
 	@Transient
 	private int valuationLevel;
 	
-	@Column(name = "SKILL_CATEGORY")
-	private String categorySkill;
+	@Transient
+	private String scopeName;
 	
 	
 	public int getIdCandidate() {
@@ -51,11 +60,18 @@ public class Skills {
 	public void setIdSkill(int idSkill) {
 		this.idSkill = idSkill;
 	}
-	public String getCategorySkill() {
-		return categorySkill;
+	public Scope getIdScope() {
+		return idScope;
 	}
-	public void setCategorySkill(String categorySkill) {
-		this.categorySkill = categorySkill;
+	public void setIdScope(Scope idScope) {
+		this.idScope = idScope;
 	}
+	public String getScopeName() {
+		return scopeName;
+	}
+	public void setScopeName(String scopeName) {
+		this.scopeName = scopeName;
+	}
+	
 	
 }

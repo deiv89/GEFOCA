@@ -21,8 +21,8 @@ public class Scope {
 	@Column(name = "SCOPE_NAME")
 	private String scopeName;
 	
-	/*@OneToMany(mappedBy = "idScope", cascade = CascadeType.ALL)
-	private List<Skills> skills = new ArrayList<>();*/
+	@OneToMany(mappedBy = "idScope", cascade = CascadeType.ALL)
+	private List<Skills> skills = new ArrayList<>();
 
 	
 	public int getIdScope() {

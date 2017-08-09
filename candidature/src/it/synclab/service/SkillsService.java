@@ -151,7 +151,7 @@ public class SkillsService implements ISkillsService {
 				skill = new Skills();
 				skill.setIdSkill(rs.getInt(1));
 				skill.setParameterName(rs.getString(2));
-				skill.setCategorySkill(rs.getString(3));
+				//skill.setCategorySkill(rs.getString(3));
 				skillList.add(skill);
 			}
 		} catch (ClassNotFoundException e) {

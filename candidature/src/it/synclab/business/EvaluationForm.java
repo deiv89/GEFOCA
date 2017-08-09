@@ -45,6 +45,9 @@ public class EvaluationForm {
 	@Column(name = "REMUNERATION_REQUIRED")
 	private double renumeration_required;
 	
+	@Column(name = "AVAILABILITY")
+	private String availability;
+	
 	@Transient
 	@ManyToOne(fetch = FetchType.EAGER)
 	private ArrayList<Candidate_Languages> spokenLanguages;
@@ -110,6 +113,12 @@ public class EvaluationForm {
 	}
 	public void setRenumeration_required(double renumeration_required) {
 		this.renumeration_required = renumeration_required;
+	}
+	public String getAvailability() {
+		return availability;
+	}
+	public void setAvailability(String availability) {
+		this.availability = availability;
 	}
 	public ArrayList<Candidate_Languages> getSpokenLanguages() {
 		return spokenLanguages;

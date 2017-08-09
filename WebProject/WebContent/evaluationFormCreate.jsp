@@ -84,7 +84,10 @@
 				<td>Retribuzione richiesta:</td>
 				<td><input type="text" name="renumerationRequired" /></td>
 			</tr>
-
+			<tr>
+				<td>Disponibile dalla data:</td>
+				<td><input type="date" name="availability" /></td>
+			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Avanti" /> <input
 					type="hidden" name="idCandidate" value="${idCandidate}">

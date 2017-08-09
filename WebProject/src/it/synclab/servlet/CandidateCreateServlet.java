@@ -100,8 +100,8 @@ public class CandidateCreateServlet extends HttpServlet {
 			currentCandidate = candidateService.read(candidate.getIdCandidate());
 		} catch (Exception e) {
 			e.printStackTrace();
-			request.setAttribute("messageFile", "ERRORE caricamento CV: " + e);
-			request.setAttribute("message", e);
+			request.setAttribute("messageFile", "Non hai caricato il CV!");
+			//request.setAttribute("message", e);
 			request.getRequestDispatcher("/candidateCreate.jsp").forward(request, response);
 		}
 

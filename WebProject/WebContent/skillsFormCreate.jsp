@@ -17,7 +17,7 @@
 			<c:forEach items="${requestScope.skillsList}" var="skill">
 				<tr>
 					<td><c:out
-							value="CATEGORIA ${skill.categorySkill} LIVELLO ${skill.parameterName}"/></td>
+							value="CATEGORIA ${skill.idScope.scopeName} LIVELLO ${skill.parameterName}"/></td>
 					<c:set var="valuationLevel" value="valuationLevel_${skill.idSkill}" />
 					<td><input type="radio" name="${valuationLevel}" value="0">
 						0 <input type="radio" name="${valuationLevel}" value="1">

@@ -2,12 +2,8 @@ package it.synclab.business;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -16,8 +12,6 @@ import javax.persistence.Transient;
 public class Candidate_Languages {
 	
 	
-	/*@SequenceGenerator(name = "idSeq", sequenceName = "LANG_SEQ")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idSeq")*/
 	@Id
 	@Column(name = "ID_LANGUAGE")
 	private int idLanguage;
