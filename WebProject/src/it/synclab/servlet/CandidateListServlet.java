@@ -44,13 +44,13 @@ public class CandidateListServlet extends HttpServlet {
 
 		if (candidateList.size() == 0) {
 			request.setAttribute("message", "NESSUNA VOCE PRESENTE!");
-			request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
+			request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
 		}
 
 		request.setAttribute("candidateList", candidateList);
 		request.setAttribute("message", message);
-		;
-		request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
+		
+		request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
 
 	}
 

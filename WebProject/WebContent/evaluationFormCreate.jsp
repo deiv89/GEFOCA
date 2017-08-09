@@ -11,6 +11,7 @@
 	<br>
 	<br>
 	<p><strong>${message}</strong></p>
+	<strong>${messageFile}</strong>
 	<br>
 	<form action="evaluationCreateServlet" method="post">
 		<table>

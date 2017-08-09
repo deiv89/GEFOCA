@@ -1,5 +1,5 @@
 package it.synclab.business;
-
+import it.synclab.business.Candidate_Skills;
 import java.util.List;
 
 import javax.persistence.*;
@@ -28,6 +28,9 @@ public class Candidate {
 
 	@Column(name = "ID_ORIGIN")	
 	private int idOrigin;
+	
+	@Column(name = "PATH_CV")
+	private String pathCv;
 	
 	/*@ManyToOne()
 	@JoinColumn(name = "ID_ORIGIN")	
@@ -100,6 +103,14 @@ public class Candidate {
 
 	public void setSkills(List<Candidate_Skills> skills) {
 		this.skills = skills;
+	}
+
+	public String getPathCv() {
+		return pathCv;
+	}
+
+	public void setPathCv(String pathCv) {
+		this.pathCv = pathCv;
 	}
 
 	/*public List<Candidate_Skills> getSkillRels() {
