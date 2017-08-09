@@ -6,8 +6,8 @@
 	<display-name>Stage Web</display-name>
 	<servlet>
 
-		<servlet-name>cs</servlet-name>
-		<servlet-class>it.synclab.servlet.Controller</servlet-class>
+	<servlet-name>cs</servlet-name>
+	<servlet-class>it.synclab.servlet.Controller</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>cs</servlet-name>
@@ -58,7 +58,7 @@
 		<servlet-name>EvaluationCreateServlet</servlet-name>
 		<url-pattern>/evaluationCreateServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>EvaluationUpdateServlet</servlet-name>
 		<servlet-class>it.synclab.servlet.EvaluationUpdateServlet</servlet-class>
@@ -67,7 +67,7 @@
 		<servlet-name>EvaluationUpdateServlet</servlet-name>
 		<url-pattern>/evaluationUpdateServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>SkillsCreateServlet</servlet-name>
 		<servlet-class>it.synclab.servlet.SkillsCreateServlet</servlet-class>
@@ -76,7 +76,7 @@
 		<servlet-name>SkillsCreateServlet</servlet-name>
 		<url-pattern>/skillsCreateServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>SkillsUpdateServlet</servlet-name>
 		<servlet-class>it.synclab.servlet.SkillsUpdateServlet</servlet-class>
@@ -94,7 +94,7 @@
 		<servlet-name>OriginCreateServlet</servlet-name>
 		<url-pattern>/originCreateServlet</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>OriginUpdateServlet</servlet-name>
 		<servlet-class>it.synclab.servlet.OriginUpdateServlet</servlet-class>
@@ -103,5 +103,14 @@
 		<servlet-name>OriginUpdateServlet</servlet-name>
 		<url-pattern>/originUpdateServlet</url-pattern>
 	</servlet-mapping>
-	
+
+	<servlet>
+		<servlet-name>DownloadServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.DownloadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadServlet</servlet-name>
+		<url-pattern>/downloadServlet</url-pattern>
+	</servlet-mapping>
+
 </web-app>

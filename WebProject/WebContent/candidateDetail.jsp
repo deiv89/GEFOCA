@@ -12,6 +12,11 @@
 	<br>
 	<h1>Dettaglio Candidato</h1>
 	<br>
+	<br>
+	<div>
+	Scarica CV candidato
+	<a href="DownloadServlet?pathCv=${candidate.pathCv}">Download</a> 
+	</div>
 	<div>
 		<strong>Cognome: </strong> ${candidate.surname}
 	</div>
