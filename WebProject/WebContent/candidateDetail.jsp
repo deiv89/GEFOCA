@@ -102,7 +102,7 @@
 			varStatus="candiSkills">
 			<tr>
 				<td><c:out
-						value="CATEGORIA ${skill.categorySkill} LIVELLO ${skill.parameterName}" /></td>
+						value="CATEGORIA ${skill.idScope.scopeName} LIVELLO ${skill.parameterName}" /></td>
 				<td>
 					<div>${candidateSkills[candiSkills.index].valuationLevel}</div>
 				</td>
