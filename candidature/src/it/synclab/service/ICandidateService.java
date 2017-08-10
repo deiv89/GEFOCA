@@ -2,6 +2,7 @@ package it.synclab.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import it.synclab.business.Candidate;
 import it.synclab.exception.CandidateNotFoundException;
@@ -21,6 +22,7 @@ public interface ICandidateService {
 
 	public void delete(int idCandidate) throws ClassNotFoundException, SQLException;
 	
+	public List<Candidate> getCandidatesByFilter(Candidate candidate);
 
 
 }

@@ -66,13 +66,13 @@ public class CandidateCreateServlet extends HttpServlet {
 		                byte[] str = new byte[input.available()];
 		                input.read(str);
 		                name = new String(str,"UTF8");
-		                candidate.setName(name);
+		                candidate.setName(capitalise(name));
 		            }
 		            if(item.getFieldName().equals("surname") && surname == null){
 		                byte[] str = new byte[input.available()];
 		                input.read(str);
 		                surname = new String(str,"UTF8");
-		                candidate.setSurname(surname);
+		                candidate.setSurname(capitalise(surname));
 		            }
 		            if(item.getFieldName().equals("dateOfBirth") && dateOfBirth == null){
 		                byte[] str = new byte[input.available()];
@@ -124,6 +124,10 @@ public class CandidateCreateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("/candidateCreate.jsp").forward(request, response);
+	}
+	
+	public static String capitalise(final String word) {
+	    return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
 	}
 
 }

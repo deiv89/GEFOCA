@@ -27,17 +27,16 @@ public class JPACandidate implements ICandidateService {
 
 	private EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
-
 	@Override
 	public void create(Candidate candidate) throws ClassNotFoundException, SQLException {
 		try {
-			 entityManager.getTransaction().begin();
-			 entityManager.persist(candidate);
-			 entityManager.getTransaction().commit();
-		}catch (Exception e) {
+			entityManager.getTransaction().begin();
+			entityManager.persist(candidate);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
 			e.printStackTrace();
-		    entityManager.getTransaction().rollback();
-		    }
+			entityManager.getTransaction().rollback();
+		}
 	}
 
 	@Override
@@ -48,10 +47,10 @@ public class JPACandidate implements ICandidateService {
 			entityManager.getTransaction().begin();
 			candidate = entityManager.find(Candidate.class, idCandidate);
 			entityManager.getTransaction().commit();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		    entityManager.getTransaction().rollback();
-		    }
+			entityManager.getTransaction().rollback();
+		}
 		return candidate;
 	}
 
@@ -90,7 +89,7 @@ public class JPACandidate implements ICandidateService {
 			e.printStackTrace();
 			entityManager.getTransaction().rollback();
 		}
-		
+
 	}
 
 	@Override
@@ -100,40 +99,62 @@ public class JPACandidate implements ICandidateService {
 			Candidate candidate = entityManager.find(Candidate.class, idCandidate);
 			entityManager.remove(candidate);
 			entityManager.getTransaction().commit();
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		    entityManager.getTransaction().rollback();
-		    }
-		
+			entityManager.getTransaction().rollback();
+		}
+
 	}
-	
+
 	public Candidate retrieveCandidateSkill(int idCandidate) throws ClassNotFoundException, SQLException {
 
 		Candidate candidate = new Candidate();
 		try {
 			entityManager.getTransaction().begin();
-			
+
 			@SuppressWarnings("unchecked")
-			ArrayList<Candidate_Skills> skillsCandidates = (ArrayList<Candidate_Skills>) entityManager.createQuery("from Candidate_Skills")
-					.getResultList();
-			
+			ArrayList<Candidate_Skills> skillsCandidates = (ArrayList<Candidate_Skills>) entityManager
+					.createQuery("from Candidate_Skills").getResultList();
+
 			candidate.setSkills(skillsCandidates);
-			/*for (int i=0; i<skillsCandidates.size(); i++){
-				Candidate_Skills cSkills = new Candidate_Skills();
-				if(skillsCandidates.get(i).getIdCandidate() == idCandidate){
-					cSkills.setIdCandidate(idCandidate);
-					cSkills.setIdSkill(skillsCandidates.get(i).getIdSkill());
-					cSkills.setValuationLevel(skillsCandidates.get(i).getValuationLevel());
-					skillsCurrentCandidate.add(cSkills);
-				}
-			}*/
-			//skillsCurrentCandidate = entityManager.find(Candidate_Skills.class, idCandidate);
+			/*
+			 * for (int i=0; i<skillsCandidates.size(); i++){ Candidate_Skills
+			 * cSkills = new Candidate_Skills();
+			 * if(skillsCandidates.get(i).getIdCandidate() == idCandidate){
+			 * cSkills.setIdCandidate(idCandidate);
+			 * cSkills.setIdSkill(skillsCandidates.get(i).getIdSkill());
+			 * cSkills.setValuationLevel(skillsCandidates.get(i).
+			 * getValuationLevel()); skillsCurrentCandidate.add(cSkills); } }
+			 */
+			// skillsCurrentCandidate =
+			// entityManager.find(Candidate_Skills.class, idCandidate);
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			entityManager.getTransaction().rollback();
 		}
 		return candidate;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<Candidate> getCandidatesByFilter(Candidate candidate) {
+
+		Query query = null;
+		try {
+			entityManager.getTransaction().begin();
+			query = entityManager
+					.createQuery("SELECT c FROM Candidate c WHERE (:name is null OR name LIKE :name) AND "
+							+ "(:surname is null OR surname LIKE :surname) ORDER BY name ASC")
+					.setParameter("name", candidate.getName() + "%")
+					.setParameter("surname", candidate.getSurname() + "%");
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
+
+		return (ArrayList<Candidate>) query.getResultList();
 	}
 
 }

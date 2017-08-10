@@ -112,5 +112,14 @@
 		<servlet-name>DownloadServlet</servlet-name>
 		<url-pattern>/downloadServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>CandidateSearchServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.CandidateSearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CandidateSearchServlet</servlet-name>
+		<url-pattern>/candidateSearchServlet</url-pattern>
+	</servlet-mapping>
 
 </web-app>

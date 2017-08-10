@@ -279,6 +279,10 @@ public class CandidateService implements ICandidateService {
 
 	}
 
-	
+	@Override
+	public ArrayList<Candidate> getCandidatesByFilter(Candidate candidate) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
