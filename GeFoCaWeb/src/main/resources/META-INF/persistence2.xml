@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="GeFoCaWeb_PU" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>it.synclab.stage.Entities.Address</class>
+		<class>it.synclab.stage.Entities.Person</class>
+		<class>it.synclab.stage.Entities.City</class>
+		<class>it.synclab.stage.Entities.Country</class>
+		<class>it.synclab.stage.Entities.Province</class>
+		<class>it.synclab.stage.Entities.Referent</class>
+		<class>it.synclab.stage.Entities.Region</class>
+		<class>it.synclab.stage.Entities.Supplier</class>
+		<class>it.synclab.stage.Entities.SupplierCompany</class>
+		<class>it.synclab.stage.Entities.SupplierOffice</class>
+		<class>it.synclab.stage.Entities.SupplierPerson</class>
+		<class>it.synclab.stage.Entities.SupplierPiVa</class>
+		<class>it.synclab.stage.Entities.SupplierSkills</class>
+		<class>it.synclab.stage.Entities.SupplierSystem</class>
+		<class>it.synclab.stage.Entities.Users</class>
+	
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+			<property name="javax.persistence.jdbc.user" value="system"/>
+			<property name="javax.persistence.jdbc.password" value="admin"/>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+			<property name="hibernate.connection.charSet" value="UTF-8"/>
+            <property name="hibernate.validator.apply_to_ddl" value="true"/>
+            <property name="hibernate.validator.autoregister_listeners" value="false"/>
+            <property name="hibernate.show_sql" value="true"/>
+            
+		</properties>
+	</persistence-unit>
+</persistence>
