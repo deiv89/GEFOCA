@@ -4,6 +4,7 @@ import it.synclab.jpa.JPACandidate;
 import it.synclab.jpa.JPAEvaluationForm;
 import it.synclab.jpa.JPAOrigin;
 import it.synclab.jpa.JPASkills;
+import it.synclab.jpa.JPAUser;
 import it.synclab.service.CandidateCollectionService;
 import it.synclab.service.CandidateService;
 import it.synclab.service.EvaluationFormCollectionService;
@@ -56,7 +57,10 @@ public class CandidateFactory {
 	
 	public static JPAOrigin getJPAOrigin(){
 		return JPAOrigin.getInstance();
-		
+	}
+	
+	public static JPAUser getJPAUser(){
+		return JPAUser.getInstance();
 	}
 
 }

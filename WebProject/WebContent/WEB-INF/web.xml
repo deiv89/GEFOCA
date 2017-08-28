@@ -6,12 +6,12 @@
 	<display-name>Stage Web</display-name>
 	<servlet>
 
-	<servlet-name>cs</servlet-name>
+	<servlet-name>WelcomePage</servlet-name>
 	<servlet-class>it.synclab.servlet.Controller</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>cs</servlet-name>
-		<url-pattern>/controller</url-pattern>
+		<servlet-name>WelcomePage</servlet-name>
+		<url-pattern>/welcomePage</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -120,6 +120,15 @@
 	<servlet-mapping>
 		<servlet-name>CandidateSearchServlet</servlet-name>
 		<url-pattern>/candidateSearchServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SignUpServlet</servlet-name>
+		<servlet-class>it.synclab.servlet.SignUpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SignUpServlet</servlet-name>
+		<url-pattern>/signUp</url-pattern>
 	</servlet-mapping>
 
 </web-app>

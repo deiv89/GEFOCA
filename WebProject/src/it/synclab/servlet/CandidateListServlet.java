@@ -27,6 +27,7 @@ public class CandidateListServlet extends HttpServlet {
 
 		response.setContentType("text/html");
 		Object message = request.getAttribute("message");
+		String username = (String) request.getAttribute("username");
 		ICandidateService candidateService = CandidateFactory.getJPACandidate();
 		ArrayList<Candidate> candidateList = new ArrayList<Candidate>();
 		try {
@@ -44,12 +45,13 @@ public class CandidateListServlet extends HttpServlet {
 
 		if (candidateList.size() == 0) {
 			request.setAttribute("message", "NESSUNA VOCE PRESENTE!");
+			request.setAttribute("username", username);
 			request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
 		}
 
 		request.setAttribute("candidateList", candidateList);
 		request.setAttribute("message", message);
-		
+		request.setAttribute("username", username);
 		request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
 
 	}
@@ -60,6 +62,7 @@ public class CandidateListServlet extends HttpServlet {
 		response.setContentType("text/html");
 
 		Object message = request.getAttribute("message");
+		String username = (String) request.getAttribute("username");
 		ICandidateService candidateService = CandidateFactory.getJPACandidate();
 		ArrayList<Candidate> candidateList = new ArrayList<Candidate>();
 		try {
@@ -77,12 +80,14 @@ public class CandidateListServlet extends HttpServlet {
 
 		if (candidateList.size() == 0) {
 			request.setAttribute("message", "NESSUNA VOCE PRESENTE!");
-			request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
+			request.setAttribute("username", username);
+			request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
 		}
 
 		request.setAttribute("candidateList", candidateList);
 		request.setAttribute("message", message);
-		request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
+		request.setAttribute("username", username);
+		request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
 
 	}
 

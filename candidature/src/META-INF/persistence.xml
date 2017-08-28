@@ -13,6 +13,9 @@
 		<class>it.synclab.business.Skills</class>
 		<class>it.synclab.business.Candidate_Skills</class>
 		<class>it.synclab.business.Origin</class>
+		<class>it.synclab.business.Scope</class>
+		<class>it.synclab.business.Users</class>
+		<class>it.synclab.business.Movements</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />

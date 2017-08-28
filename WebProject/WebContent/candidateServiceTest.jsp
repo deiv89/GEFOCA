@@ -15,6 +15,10 @@
 </head>
 <body>
 	<h1>GESTIONE CANDIDATURE</h1>
+	<p>
+		<strong>${messageUsername}</strong>
+		<strong>Benvenuto ${username} nel portale Candidature</strong>
+	</p>
 	<div class="line"></div>
 	<br>
 	<div class="container">
