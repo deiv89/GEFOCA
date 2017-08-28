@@ -42,16 +42,18 @@ public class SignUpServlet extends HttpServlet {
 		try {
 			if (username.isEmpty() || username == null) {
 				request.setAttribute("messageUsername", "Username non valido ");
-			//	request.getRequestDispatcher("/signUp.jsp").forward(request, response);
+				// request.getRequestDispatcher("/signUp.jsp").forward(request,
+				// response);
 			}
 			if (password.isEmpty() || password == null) {
 				request.setAttribute("messagePassword", "Password non valida ");
-				//request.getRequestDispatcher("/signUp.jsp").forward(request, response);
+				// request.getRequestDispatcher("/signUp.jsp").forward(request,
+				// response);
 			}
-			userList = userService.read(username);
+			userList = userService.read(capitalise(username));
 			if (userList.size() == 0 || userList == null) {
 				if (password.equals(checkedPassword)) {
-					user.setUserName(username);
+					user.setUserName(capitalise(username));
 					user.setPassWord(password);
 					userService.create(user);
 				} else {
@@ -67,13 +69,14 @@ public class SignUpServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("message", "Username e Password non validi");
 			request.getRequestDispatcher("/signUp.jsp").forward(request, response);
-		} /*catch (Exception e) {
-			e.printStackTrace();
-			//request.setAttribute("message", e);
-			request.getRequestDispatcher("/signUp.jsp").forward(request, response);
-		}*/
+		} /*
+			 * catch (Exception e) { e.printStackTrace();
+			 * //request.setAttribute("message", e);
+			 * request.getRequestDispatcher("/signUp.jsp").forward(request,
+			 * response); }
+			 */
 		ArrayList<User> currentUser = new ArrayList<User>();
-		currentUser = userService.read(username);
+		currentUser = userService.read(capitalise(username));
 		if (currentUser != null && currentUser.size() > 0) {
 			request.setAttribute("username", currentUser.get(0).getUserName());
 			request.setAttribute("message", "Registrazione avvenuta con successo!");
@@ -84,6 +87,10 @@ public class SignUpServlet extends HttpServlet {
 			request.setAttribute("message", "ERRORE: Registrazione Utente non riuscita");
 			request.getRequestDispatcher("/signUp.jsp").forward(request, response);
 		}
+	}
+
+	public static String capitalise(final String word) {
+		return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
 	}
 
 }

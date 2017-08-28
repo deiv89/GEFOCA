@@ -46,13 +46,26 @@ public class JPAUser implements IUserService {
 	public void create(User user) throws ClassNotFoundException, SQLException {
 		try {
 			entityManager.getTransaction().begin();
-			entityManager.persist(user);
+			entityManager.createNativeQuery("INSERT INTO USERS (id, username, password, TS_REGISTRATION) "+
+            "VALUES (SEQ_USERS.nextval, :username, :psw, CURRENT_TIMESTAMP)").setParameter("username", user.getUserName()).setParameter("psw", user.getPassWord()).executeUpdate();
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 			entityManager.getTransaction().rollback();
 		}
 	}
+	
+	/*@Override
+	public void create(User user) throws ClassNotFoundException, SQLException {
+		try {
+			entityManager.getTransaction().begin();
+			entityManager.persist(user);
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
+	}*/
 
 	/*
 	 * @Override public ArrayList<Candidate> getCandidateList() throws
