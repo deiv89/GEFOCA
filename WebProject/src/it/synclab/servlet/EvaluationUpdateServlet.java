@@ -71,6 +71,7 @@ public class EvaluationUpdateServlet extends HttpServlet {
 
 			eform.setCurrentPay(ParameterUtility.getDoubleValue(request, "currentPay", 0.0));
 			eform.setRenumeration_required(ParameterUtility.getDoubleValue(request, "renumerationRequired", 0.0));
+			eform.setAvailability(request.getParameter("availability"));
 			eform.setIdCandidate(idCandidate);
 
 			efService.updateEvalForm(eform);

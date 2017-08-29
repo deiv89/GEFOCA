@@ -149,6 +149,7 @@ public class JPAEvaluationForm implements IEvaluationFormService {
 			currentEvalForm.setRenumeration_required(eform.getRenumeration_required());
 			currentEvalForm.setExperience(eform.getExperience());
 			currentEvalForm.setTransfer(eform.getTransfer());
+			currentEvalForm.setAvailability(eform.getAvailability());
 			entityManager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();

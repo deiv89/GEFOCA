@@ -3,60 +3,81 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Open Sans'
+	rel='stylesheet'>
 <title>Candidature WebApp</title>
-<link rel="stylesheet" type="text/css" href="resources/candidateCSS.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/candidateCSS.css">
 </head>
 <body>
-	<h1>GESTIONE CANDIDATURE</h1>
-	<br>
-	<h2>CERCA CONTATTO</h2>
+	<%
+		//allow access only if session exists
+		String user = null;
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("loginSignup.jsp");
+		} else
+			user = (String) session.getAttribute("user");
+	%>
 	
-	<table>
-		<div>
-			<tr>
-				
-				<td id="tdName"><input type="text" name="name" placeholder="Nome"/></td>
-			</tr>
-			<tr>
-				
-				<td><input type="text" name="surname" placeholder="Cognome"/></td>
-			</tr>
-
-			<td colspan="3"><i class="fa fa-search" style="font-size:30px"><input type="submit" value="CERCA CANDIDATO" ></i></td>
-		</tr>
-	</table>
+	<h1>GESTIONE CANDIDATURE</h1>
+	<p>
+		<strong>${messageUsername}</strong> <strong>Benvenuto
+			${username} nel portale Candidature</strong> <strong>${username} <a
+			href="LogOut">LOGOUT</a></strong>
+	</p>
+	<div class="line"></div>
 	<br>
-	<a href="CandidateCreateServlet" style="font-size:24px"><i class="fa fa-pencil"></i>CREA NUOVO CANDIDATO</a>
-	<br>
-	<h2>LISTA CANDIDATI</h2>
-	<p><strong>${message}</strong></p>
-
-	<table>
-		<tr>
-			<th>COGNOME</th>
-			<th>NOME</th>
-			<th>DATA DI NASCITA</th>
-			<th>ID CANDIDATO</th>
-		</tr>
-
-
-		<c:forEach items="${requestScope.candidateList}" var="candidate">
+	<div class="container">
+		<fieldset>
+			<legend>
+				<h2>CERCA CONTATTO</h2>
+			</legend>
+			<div>
+				<form action="CandidateSearchServlet" method="post">
+					<input type="text" name="name" placeholder="Nome" /> <input
+						id="surname" type="text" name="surname" placeholder="Cognome" />
+					<button type="submit" class="btn">
+						<i class="fa fa-search"></i>
+					</button>
+				</form>
+			</div>
+		</fieldset>
+		<br>
+		<div class="new">
+			<a href="CandidateCreateServlet"><span class="fa fa-user"></span>&nbsp;
+				CREA NUOVO CANDIDATO</a>
+		</div>
+		<br>
+		<h2>LISTA CANDIDATI</h2>
+		<p>
+			<strong>${message}</strong>
+		</p>
+		<table>
 			<tr>
-				<td><c:out value="${candidate.surname}" /></td>
-				<td><c:out value="${candidate.name}" /></td>
-				<td><c:out value="${candidate.dateOfBirth}" /></td>
-				<td><c:out value="${candidate.idCandidate}" /></td>
-
-				<td><a href="CandidateDetailServlet?surname=${candidate.surname}&idCandidate=${candidate.idCandidate}&idOrigin=${candidate.idOrigin}" style="font-size:24px"><i class="fa fa-address-card-o"></i>DETTAGLIO COMPLETO</a></td>
-				<td><a href="CandidateDeleteServlet?surname=${candidate.surname}&idCandidate=${candidate.idCandidate}&idOrigin=${candidate.idOrigin}" style="font-size:24px"><i class="fa fa-trash-o" aria-hidden="true"></i>ELIMINA</a></td>
+				<th>COGNOME</th>
+				<th>NOME</th>
+				<th>DATA DI NASCITA</th>
+				<th>ID CANDIDATO</th>
 			</tr>
-			
-		</c:forEach>
-
-	</table>
-	<br>
-
+			<c:forEach items="${requestScope.candidateList}" var="candidate">
+				<tr>
+					<td><c:out value="${candidate.surname}" /></td>
+					<td><c:out value="${candidate.name}" /></td>
+					<td><c:out value="${candidate.dateOfBirth}" /></td>
+					<td><c:out value="${candidate.idCandidate}" /></td>
+					<td><a class="tab"
+						href="CandidateDetailServlet?surname=${candidate.surname}&idCandidate=${candidate.idCandidate}&idOrigin=${candidate.idOrigin}"><span
+							class="fa fa-address-card-o"></span>&nbsp; DETTAGLI</a></td>
+					<td><a class="tab"
+						href="CandidateDeleteServlet?surname=${candidate.surname}&idCandidate=${candidate.idCandidate}&idOrigin=${candidate.idOrigin}"><span
+							class="fa fa-trash-o"></span>&nbsp; ELIMINA</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
 </body>
 </html>

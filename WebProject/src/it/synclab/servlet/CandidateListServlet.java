@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.synclab.business.Candidate;
 import it.synclab.business.CandidateFactory;
@@ -26,33 +27,38 @@ public class CandidateListServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		Object message = request.getAttribute("message");
-		String username = (String) request.getAttribute("username");
-		ICandidateService candidateService = CandidateFactory.getJPACandidate();
-		ArrayList<Candidate> candidateList = new ArrayList<Candidate>();
-		try {
-			candidateList = candidateService.getCandidateList();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EmptyCandidateListException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-		if (candidateList.size() == 0) {
-			request.setAttribute("message", "NESSUNA VOCE PRESENTE!");
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			String name = (String) session.getAttribute("name");
+
+			Object message = request.getAttribute("message");
+			String username = (String) request.getAttribute("username");
+			ICandidateService candidateService = CandidateFactory.getJPACandidate();
+			ArrayList<Candidate> candidateList = new ArrayList<Candidate>();
+			try {
+				candidateList = candidateService.getCandidateList();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (EmptyCandidateListException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			if (candidateList.size() == 0) {
+				request.setAttribute("message", "NESSUNA VOCE PRESENTE!");
+				request.setAttribute("username", username);
+				request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
+			}
+
+			request.setAttribute("candidateList", candidateList);
+			request.setAttribute("message", message);
 			request.setAttribute("username", username);
-			request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
+			request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
+		} else {
+			request.setAttribute("message", "Devi effettuare il Log In");
+			request.getRequestDispatcher("/loginSignup.jsp").forward(request, response);
 		}
-
-		request.setAttribute("candidateList", candidateList);
-		request.setAttribute("message", message);
-		request.setAttribute("username", username);
-		request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
 
 	}
 
@@ -61,33 +67,37 @@ public class CandidateListServlet extends HttpServlet {
 
 		response.setContentType("text/html");
 
-		Object message = request.getAttribute("message");
-		String username = (String) request.getAttribute("username");
-		ICandidateService candidateService = CandidateFactory.getJPACandidate();
-		ArrayList<Candidate> candidateList = new ArrayList<Candidate>();
-		try {
-			candidateList = candidateService.getCandidateList();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EmptyCandidateListException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			String name = (String) session.getAttribute("name");
 
-		if (candidateList.size() == 0) {
-			request.setAttribute("message", "NESSUNA VOCE PRESENTE!");
+			Object message = request.getAttribute("message");
+			String username = (String) request.getAttribute("username");
+			ICandidateService candidateService = CandidateFactory.getJPACandidate();
+			ArrayList<Candidate> candidateList = new ArrayList<Candidate>();
+			try {
+				candidateList = candidateService.getCandidateList();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (EmptyCandidateListException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			if (candidateList.size() == 0) {
+				request.setAttribute("message", "NESSUNA VOCE PRESENTE!");
+				request.setAttribute("username", username);
+				request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
+			}
+
+			request.setAttribute("candidateList", candidateList);
+			request.setAttribute("message", message);
 			request.setAttribute("username", username);
-			request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
+			request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
+		} else {
+			request.setAttribute("message", "Devi effettuare il Log In");
+			request.getRequestDispatcher("/loginSignup.jsp").forward(request, response);
 		}
-
-		request.setAttribute("candidateList", candidateList);
-		request.setAttribute("message", message);
-		request.setAttribute("username", username);
-		request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
 
 	}
 

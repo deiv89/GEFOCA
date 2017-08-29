@@ -1,9 +1,0 @@
-diff a/candidature/src/it/synclab/business/Candidate.java b/candidature/src/it/synclab/business/Candidate.java	(rejected hunks)
-@@ -5,6 +5,7 @@
- import javax.persistence.*;
- //X commit di test ciauuuu
- //ulteriore commento per Augustin
-+//test augustin
- @Entity
- @Table(name = "CANDIDATE")
- public class Candidate {

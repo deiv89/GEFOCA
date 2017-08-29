@@ -2,34 +2,38 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Candidature WebApp</title>
+<link rel="stylesheet" type="text/css" href="resources/css/loginSignupCSS.css">
+<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
 </head>
 <body>
 	<p>
 		<strong>${message}</strong>
 	</p>
 	<h1>CANDIDATURE MANAGEMENT</h1>
+	<div class="line"></div>
 	<h2>LOG-IN OR SIGN-UP</h2>
-	<form action="welcomePage" method="post">
-		<table>
-			<tr>
-				<strong>${messageUsername}</strong>
-				<td>Username:</td>
-				<td><input type="text" name="userName" /></td>
-			</tr>
-			<tr>
-				<strong>${messagePsw}</strong>
-				<td>Password:</td>
-				<td><input type="password" name="password" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="ACCEDI"></td>
-			</tr>
-		</table>
-	</form>
-	<br>
-	<p>
-		Non ti sei ancora registrato? Registrati <a href="SignUpServlet">QUI</a>
-	</p>
-
+	<div class="container">
+		<form action="welcomePage" method="post">
+			<p class="reg"><strong>${messageUsername}</strong>
+					<strong>${messagePsw}</strong>
+			</p>
+				<div class="container2">
+					<table>
+						<tr>
+							<td id="pad">Username:<br>
+							<input type="text" name="userName" /></td>
+						</tr>
+						<tr>
+							<td>Password:<br>
+							<input type="password" name="password" /></td>
+						</tr>
+					</table>
+					<p class="reg"><input type="submit" value="ACCEDI"></p>
+					<p id="reg">
+						Non ti sei ancora registrato? Registrati <a id="link" href="SignUpServlet">QUI</a>
+					</p>
+				</div>
+		</form>
+	</div>
 </body>
 </html>

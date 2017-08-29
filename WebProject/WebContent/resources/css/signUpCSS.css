@@ -1,0 +1,134 @@
+body {
+  font-family: 'Open Sans';
+  color: #555;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.line {
+  width: 75px;
+  margin: 0 auto;
+  height: 4px;
+  background-color: #555;
+  margin-bottom: 30px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.container2 {
+    width: 500px;
+    background-color: #13232f;
+    margin: 0 auto;
+    border-radius: 15px;
+
+}
+
+table {
+    border-collapse: collapse;
+    text-align: center;
+    margin: 0 auto;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    color: #fff;
+}
+
+#pad {
+  padding-top: 40px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.reg, #reg {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+#reg {
+  color: #fff;
+  margin-top: 0;
+  font-size: 13px;
+}
+
+.name{
+   width: 100%;
+}
+
+input[type=text], input[type=password] {
+    background-image: url('searchicon.png');
+    padding: 8px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    height: 42px;
+    font-size: 15px;
+    font-family: "Open Sans";
+    background-color: transparent;
+}
+
+input[type=text]:focus  {
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+}
+
+input[type=password]:focus {
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border: 2px solid #4CAF50;
+    font-size: 17px;
+    font-family: 'Open Sans';
+}
+
+input[type=submit]:hover {
+    background-color: transparent;
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+a:link, a:visited {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #4CAF50;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+}
+
+a:hover, a:active {
+    background-color: white;
+    color: #4CAF50;
+}
+
+#link {
+  color: #4CAF50;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+}
+
+#link:hover {
+  text-decoration: underline;
+}

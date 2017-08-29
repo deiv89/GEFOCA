@@ -4,49 +4,52 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Candidature WebApp</title>
-<link rel="stylesheet" type="text/css" href="resources/candidateUpdateCSS.css">
+<link href='https://fonts.googleapis.com/css?family=Open Sans'
+	rel='stylesheet'>
+<link rel="stylesheet" type="text/css"
+	href="resources/css/candidateUpdateCSS.css">
 </head>
 <body>
+	<% //allow access only if session exists 
+	String user = null; if
+	(session.getAttribute("user") == null) {
+	response.sendRedirect("loginSignup.jsp"); } else user = (String)
+	session.getAttribute("user"); %>
 	<h1>Modifica Candidato</h1>
+	<p>
+		<strong>${username} <a href="LogOut">LOGOUT</a></strong>
+	</p>
+	<div class="line"></div>
 	<br>
 	<br>
-	<p><strong>${message}</strong></p>
-	<br>
-	<form action="candidateUpdateServlet" method="post">
-		<table>
-			<tr>
-				<td>Nome:</td>
-				<td><input type="text" name="name" value="${candidate.name}"/></td>
-			</tr>
-			<tr>
-				<td>Cognome:</td>
-				<td><input type="text" name="surname" value="${candidate.surname}"/></td>
-			</tr>
-			<tr>
-				<td>Data di Nascita:</td>
-				<td><input type="date" name="dateOfBirth" value="${candidate.dateOfBirth}"/></td>
-			</tr>
-			<tr>
-				<td>Qualificazione:</td>
-				<td><input type="text" name="qualification" value="${candidate.qualification}"/></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="idCandidate" value="${candidate.idCandidate}"/></td>
-			</tr>
-			<tr>
-				<td><input type="hidden" name="idOrigin" value="${candidate.idOrigin}"/></td>
-			</tr>
-			
-			<br>
-			<tr>
-				<td colspan="2"><input type="submit" value="SALVA MODIFICA"/></td>
-			</tr>
-		</table>
-	</form>
-	
-	
-	
-	<a href="CandidateDetailServlet?surname=${candidate.surname}&idCandidate=${candidate.idCandidate}&idOrigin=${candidate.idOrigin}">TORNA INDIETRO</a>
-
+	<div class="container">
+		<p>
+			<strong>${message}</strong>
+		</p>
+		<form action="candidateUpdateServlet" method="post">
+			<p>
+				Nome:<br> <input type="text" class="name" name="name"
+					value="${candidate.name}" />
+			</p>
+			<p>
+				Cognome:<br> <input type="text" class="name" name="surname"
+					value="${candidate.surname}" />
+			</p>
+			<p>
+				Data di Nascita:<br> <input type="date" name="dateOfBirth"
+					value="${candidate.dateOfBirth}" />
+			</p>
+			<p>
+				Qualificazione:<br> <input type="text" id="qualification"
+					name="qualification" value="${candidate.qualification}" />
+			</p>
+			<input type="hidden" name="idCandidate"
+				value="${candidate.idCandidate}" /> <input type="hidden"
+				name="idOrigin" value="${candidate.idOrigin}" />
+		</form>
+		<br> <a><input type="submit" value="SALVA MODIFICA" /></a> <a
+			href="CandidateDetailServlet?surname=${candidate.surname}&idCandidate=${candidate.idCandidate}&idOrigin=${candidate.idOrigin}"><<
+			&nbsp; TORNA INDIETRO</a>
+	</div>
 </body>
 </html>

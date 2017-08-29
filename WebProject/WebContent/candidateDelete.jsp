@@ -3,131 +3,98 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="resources/candidateDeleteCSS.css">
+<link href='https://fonts.googleapis.com/css?family=Open Sans'
+	rel='stylesheet'>
+<link rel="stylesheet" type="text/css"
+	href="resources/css/candidateDeleteCSS.css">
 <title>Candidature WebApp</title>
 </head>
 <body>
-	<h1>Elimina Candidato</h1>
-	<br>
-	<br>
-	<p><strong>${message}</strong></p>/p>
-	<br>
-	<h2>
-		Sei sicuro di volere eliminare il Candidato <strong>${candidate.surname}</strong>
-		?
-	</h2>
-	<br>
-	<form action="candidateDeleteServlet" method="post">
-		<table>
-			<div>
-				<strong>Cognome: </strong> ${candidate.surname}
-			</div>
-			<div>
-				<strong>Nome: </strong> ${candidate.name}
-			</div>
-			<div>
-				<strong>Data di Nascita: </strong> ${candidate.dateOfBirth}
-			</div>
-			<div>
-				<strong>Qualifica: </strong> ${candidate.qualification}
-			</div>
-			<div>
-				<strong>Id Candidato: </strong> ${candidate.idCandidate}
-			</div>
-			<div>
-				<strong>Id Origin: </strong> ${candidate.idOrigin}
-			</div>
-
-			<h1>Scheda valutazione Candidato</h1>
+	<%
+		//allow access only if session exists
+		String user = null;
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("loginSignup.jsp");
+		} else
+			user = (String) session.getAttribute("user");
+	%>
+	<div class="container-all">
+		<h1>Elimina Candidato</h1>
+		<p>
+			<strong>${username} <a href="LogOut">LOGOUT</a></strong>
+		</p>
+		<div class="container">
+			<p>
+				<strong>${message}</strong>
+			</p>
 			<br>
-			<div>
-				<strong>Nome Intervistatore:: </strong>
-				${evaluationForm.interviewerName}
-			</div>
-			<div>
-				<strong>Livello presenza: </strong> ${evaluationForm.levelPresence}
-			</div>
-			<div>
-				<strong>Livello Comunicazione: </strong>
-				${evaluationForm.levelComunication}
-			</div>
-			<div>
-				<strong>Livello Dinamicità: </strong>
-				${evaluationForm.levelDynamicity}
-			</div>
-			<div>
-				<strong>Esperienze: </strong> ${evaluationForm.experience}
-			</div>
-			<div>
-				<strong>Motivazioni: </strong> ${evaluationForm.motivazioni}
-			</div>
-			<div>
-				<strong>Disponibile a Trasferte: </strong>
-				${evaluationForm.transfer}
-			</div>
-			<div>
-				<strong>Lingue conosciute: </strong> <br>
-				<table>
-					<c:forEach items="${spokenLanguages}" var="candidateLang"
-						varStatus="lang">
-						<tr>
-							<td><c:out
-									value="LINGUA
-						${languagesList[lang.index].languageName} LIVELLO: " /></td>
-							<td>${candidateLang.languageLevel}</td>
-						</tr>
-					</c:forEach>
-				</table>
-			</div>
-			<div>
-				<strong>Retribuzione attuale: </strong> ${evaluationForm.currentPay}
-			</div>
-			<div>
-				<strong>Retribuzione richiesta: </strong>
-				${evaluationForm.renumeration_required}
-			</div>
+			<h2>
+				Sei sicuro di volere eliminare il Candidato <strong>${candidate.surname}</strong>?
+			</h2>
 			<br>
-			<h1>Skill Matrix Candidato</h1>
-			<br>
-			<table>
-				<c:forEach items="${requestScope.skillsList}" var="skill"
-					varStatus="candiSkills">
-					<tr>
-						<td><c:out
-								value="CATEGORIA ${skill.categorySkill} LIVELLO ${skill.parameterName}" /></td>
-						<td>
-							<div>${candidateSkills[candiSkills.index].valuationLevel}</div>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-			<br>
-			<h1>Canale di provenienza Candidato</h1>
-			<br>
-			<div>
-				<strong>ID Canale di Provenienza: </strong> ${origin.idOrigin}
+			<form action="candidateDeleteServlet" method="post">
+				<strong>Cognome: </strong> ${candidate.surname}<br> <strong>Nome:
+				</strong> ${candidate.name}<br> <strong>Data di Nascita: </strong>
+				${candidate.dateOfBirth}<br> <strong>Qualifica: </strong>
+				${candidate.qualification}<br> <strong>Id Candidato: </strong>
+				${candidate.idCandidate}<br> <strong>Id Origin: </strong>
+				${candidate.idOrigin}
+		</div>
+		<h1>Scheda valutazione Candidato</h1>
+		<div class="container">
+			<strong>Nome Intervistatore: </strong>
+			${evaluationForm.interviewerName}<br> <strong>Livello
+				presenza: </strong> ${evaluationForm.levelPresence}<br> <strong>Livello
+				Comunicazione: </strong> ${evaluationForm.levelComunication}<br> <strong>Livello
+				Dinamicitï¿½: </strong> ${evaluationForm.levelDynamicity}<br> <strong>Esperienze:
+			</strong> ${evaluationForm.experience}<br> <strong>Motivazioni:
+			</strong> ${evaluationForm.motivazioni}<br> <strong>Disponibile
+				a Trasferte: </strong> ${evaluationForm.transfer}<br> <strong>Lingue
+				conosciute: </strong>
+			<c:forEach items="${spokenLanguages}" var="candidateLang"
+				varStatus="lang">
+				<c:out
+					value="LINGUA ${languagesList[lang.index].languageName} LIVELLO: " />
+										${candidateLang.languageLevel}<br>
+			</c:forEach>
+			<strong>Retribuzione attuale: </strong> ${evaluationForm.currentPay}<br>
+			<strong>Retribuzione richiesta: </strong>
+			${evaluationForm.renumeration_required}<br> <strong>Disponibile
+				dalla data: </strong> ${evaluationForm.availability}<br>
+		</div>
+		<h1>Skill Matrix Candidato</h1>
+		<div class="container">
+			<c:forEach items="${requestScope.skillsList}" var="skill"
+				varStatus="candiSkills">
+				<c:out
+					value="CATEGORIA ${skill.idScope.scopeName} LIVELLO ${skill.parameterName}" />
+												${candidateSkills[candiSkills.index].valuationLevel}
+							</c:forEach>
+		</div>
+		<h1>Canale di provenienza Candidato</h1>
+		<div class="container">
+			<strong>ID Canale di Provenienza: </strong> ${origin.idOrigin}<br>
+			<strong>Descrizione: </strong> ${origin.description}<br> <strong>Indirizzo:
+			</strong> ${origin.address}<br> <strong>Telefono: </strong>
+			${origin.phone}<br> <input type="hidden" name="surname"
+				value="${candidate.surname}"> <input type="hidden"
+				name="idCandidate" value="${candidate.idCandidate}"> <input
+				type="hidden" name="idOrigin" value="${candidate.idOrigin}">
+			</form>
+		</div>
+		<div class="container2">
+			<div style="padding-top: 12px;">
+				<a class="back" href="CandidateListServlet"><<&nbsp; TORNA
+					INDIETRO</a>
 			</div>
-			<div>
-				<strong>Descrizione: </strong> ${origin.description}
+			<div style="text-align: right;">
+				<input type="submit" class="download" value="ELIMINA CANDIDATO" />
+				<input type="hidden" name="surname" value="${candidate.surname}">
+				<input type="hidden" name="idCandidate"
+					value="${candidate.idCandidate}"> <input type="hidden"
+					name="idOrigin" value="${candidate.idOrigin}">
 			</div>
-			<div>
-				<strong>Indirizzo: </strong> ${origin.address}
-			</div>
-			<div>
-				<strong>Telefono: </strong> ${origin.phone}
-			</div>
-			<tr>
-				<td colspan="2"><input type="submit" value="ELIMINA CANDIDATO" />
-					<input type="hidden" name="surname" value="${candidate.surname}">
-					<input type="hidden" name="idCandidate" value="${candidate.idCandidate}">
-					<input type="hidden" name="idOrigin" value="${candidate.idOrigin}">
-					</td>
-			</tr>
-		</table>
-	</form>
-	<br>
-	<br>
-	<a href="CandidateListServlet">ANNULLA E TORNA INDIETRO</a>
-
+		</div>
+	</div>
 </body>
 </html>

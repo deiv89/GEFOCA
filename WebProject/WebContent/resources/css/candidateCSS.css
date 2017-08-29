@@ -1,0 +1,127 @@
+body{
+  font-family: 'Open Sans';
+  color: #555;
+}
+h1{
+    text-align: center;
+}
+
+.line{
+  width: 75px;
+  margin: 0 auto;
+  height: 4px;
+  background-color: #555;
+}
+
+.container{
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
+a {
+  background-color: #4CAF50;
+  color: white;
+  border: 2px solid #4CAF50;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Open Sans';
+  font-size:  20px;
+}
+
+a:hover, a:active {
+    background-color: white;
+    color: #4CAF50;
+}
+
+.new{
+  text-align: center;
+  margin-top: 30px;
+}
+
+.tab{
+  font-size: 16px;
+  padding: 6px 10px;
+  color: #4CAF50;
+  background-color: transparent;
+  border: none;
+}
+
+.tab:hover{
+  color: #555;
+  background-color: transparent;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+  font-weight: normal;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover{background-color:#f5f5f5}
+
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input[type=text] {
+  background-image: url('searchicon.png');
+  padding: 8px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+  height: 42px;
+  font-size: 15px;
+  font-family: "Open Sans";
+  width: 46%;
+}
+
+input[type=text]:focus {
+    border: 1px solid #4CAF50;
+}
+
+#surname{
+  margin-left: 13px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px auto;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    border: 2px solid #4CAF50;
+    float:right;
+    font-size: 20px;
+    font-family: 'Open Sans';
+    height: 42px;
+    width: 42px;
+}
+
+.btn:hover {
+    background-color: white;
+    border-color: #4CAF50;
+    color: #4CAF50;
+}
+
+::-webkit-input-placeholder { font-family: "Open Sans"; font-size: 15px;}
+::-moz-placeholder { font-family: "Open Sans"; font-size: 15px;} /* firefox 19+ */
+:-ms-input-placeholder { font-family: "Open Sans"; font-size: 15px;} /* ie */
+input:-moz-placeholder { font-family: "Open Sans"; font-size: 15px;}

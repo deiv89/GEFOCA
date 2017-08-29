@@ -130,5 +130,14 @@
 		<servlet-name>SignUpServlet</servlet-name>
 		<url-pattern>/signUp</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LogOut</servlet-name>
+		<servlet-class>it.synclab.servlet.LogOutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogOut</servlet-name>
+		<url-pattern>/logOut</url-pattern>
+	</servlet-mapping>
 
 </web-app>
