@@ -32,15 +32,18 @@ public class SkillsCreateServlet extends HttpServlet {
 		if (request.getAttribute("firstTime") != null) {
 			int idCandidate = (Integer) request.getAttribute("idCandidate");
 			String surname = request.getParameter("surname");
+			String user = (String) request.getAttribute("username");
 			ISkillsService skillService = CandidateFactory.getJPASkills();
 			ArrayList<Skills> skillsList = new ArrayList<Skills>();
 			try {
 				skillsList = skillService.getSkillsList();
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
+				request.setAttribute("username", user);
 				request.setAttribute("message", e);
 				request.getRequestDispatcher("/skillsFormCreate.jsp").forward(request, response);
 			}
+			request.setAttribute("username", user);
 			request.setAttribute("skillsList", skillsList);
 			request.setAttribute("idCandidate", idCandidate);
 			request.setAttribute("surname", surname);
@@ -48,6 +51,7 @@ public class SkillsCreateServlet extends HttpServlet {
 		} else {
 			int idCandidate = Integer.parseInt(request.getParameter("idCandidate"));
 			String surname = request.getParameter("surname");
+			String user = (String) request.getAttribute("username");
 			ISkillsService skillService = CandidateFactory.getJPASkills();
 			ArrayList<Skills> skillsList = new ArrayList<Skills>();
 			ArrayList<Candidate_Skills> candidateSkills = new ArrayList<Candidate_Skills>();
@@ -56,6 +60,7 @@ public class SkillsCreateServlet extends HttpServlet {
 				skillsList = skillService.getSkillsList();
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
+				request.setAttribute("username", user);
 				request.setAttribute("message", e);
 				request.getRequestDispatcher("/skillsFormCreate.jsp").forward(request, response);
 			}
@@ -70,19 +75,18 @@ public class SkillsCreateServlet extends HttpServlet {
 			try {
 				ISkillsService skillsService = CandidateFactory.getJPASkills();
 				skillsService.create(candidateSkills);
-				
-				//skillService.create(candidateSkills);
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
+				request.setAttribute("username", user);
 				request.setAttribute("message", e);
 				request.getRequestDispatcher("/skillsFormCreate.jsp").forward(request, response);
 			}
-
 			try {
 				ArrayList<Candidate_Skills> currentSkills;
 				ISkillsService skillsService = CandidateFactory.getSkillsService();
 				currentSkills = skillsService.read(idCandidate);
 				if (currentSkills != null) {
+					request.setAttribute("username", user);
 					request.setAttribute("message",
 							"Skills Matrix ID Candidato " + idCandidate + " salvata con successo!");
 					request.setAttribute("firstTime", "yes");
@@ -91,6 +95,7 @@ public class SkillsCreateServlet extends HttpServlet {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/OriginCreateServlet");
 					rd.forward(request, response);
 				} else {
+					request.setAttribute("username", user);
 					request.setAttribute("message", "ERRORE: Creazione Skills Matrix non riuscita");
 					request.getRequestDispatcher("/skillsFormCreate.jsp").forward(request, response);
 				}
@@ -106,15 +111,18 @@ public class SkillsCreateServlet extends HttpServlet {
 		response.setContentType("text/html");
 
 		int idCandidate = (Integer) request.getAttribute("idCandidate");
+		String user = (String) request.getAttribute("username");
 		ISkillsService skillService = CandidateFactory.getJPASkills();
 		ArrayList<Skills> skillsList = new ArrayList<Skills>();
 		try {
 			skillsList = skillService.getSkillsList();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("username", user);
 			request.setAttribute("message", e);
 			request.getRequestDispatcher("/skillsFormCreate.jsp").forward(request, response);
 		}
+		request.setAttribute("username", user);
 		request.setAttribute("skillsList", skillsList);
 		request.setAttribute("idCandidate", idCandidate);
 		request.getRequestDispatcher("/skillsFormCreate.jsp").forward(request, response);

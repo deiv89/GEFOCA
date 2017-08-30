@@ -30,8 +30,7 @@ public class CandidateListServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 		if (session != null) {
-			String name = (String) session.getAttribute("name");
-
+			// String name = (String) session.getAttribute("name");
 			Object message = request.getAttribute("message");
 			String username = (String) request.getAttribute("username");
 			ICandidateService candidateService = CandidateFactory.getJPACandidate();
@@ -50,7 +49,6 @@ public class CandidateListServlet extends HttpServlet {
 				request.setAttribute("username", username);
 				request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
 			}
-
 			request.setAttribute("candidateList", candidateList);
 			request.setAttribute("message", message);
 			request.setAttribute("username", username);
@@ -69,8 +67,7 @@ public class CandidateListServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(false);
 		if (session != null) {
-			String name = (String) session.getAttribute("name");
-
+			// String name = (String) session.getAttribute("name");
 			Object message = request.getAttribute("message");
 			String username = (String) request.getAttribute("username");
 			ICandidateService candidateService = CandidateFactory.getJPACandidate();

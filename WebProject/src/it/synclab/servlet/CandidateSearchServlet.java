@@ -25,6 +25,7 @@ public class CandidateSearchServlet extends HttpServlet {
 
 		response.setContentType("text/html");
 		Object message = request.getAttribute("message");
+		String username = (String) request.getAttribute("username");
 		Candidate candidate = new Candidate();
 		candidate.setName(capitalise(request.getParameter("name")));
 		candidate.setSurname(capitalise(request.getParameter("surname")));
@@ -34,13 +35,15 @@ public class CandidateSearchServlet extends HttpServlet {
 
 		if (candidateList.size() == 0) {
 			request.setAttribute("message", "NESSUNA VOCE PRESENTE!");
-			request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
+			request.setAttribute("username", username);
+			request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
 		}
 
 		request.setAttribute("candidateList", candidateList);
+		request.setAttribute("username", username);
 		request.setAttribute("message", message);
 		
-		request.getRequestDispatcher("/candidateServiceTest.jsp").forward(request, response);
+		request.getRequestDispatcher("/candidateService.jsp").forward(request, response);
 
 
 	}

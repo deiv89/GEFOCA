@@ -33,40 +33,34 @@
 		<strong>${message}</strong>
 	</p>
 	<br>
-	<div class="container">
-		<form action="candidateCreateServlet" method="post">
-			<p>
-				Nome:<br> <input class="name" type="text" name="name" />
-			</p>
-			<p>
-				Cognome:<br> <input class="name" type="text" name="surname" />
-			</p>
-			<p>
-				Data di Nascita:<br> <input type="date" name="dateOfBirth" />
-			</p>
-			<p>
-				Qualificazione:<br> <input id="qualification" type="text"
-					name="qualification" />
-			</p>
-			<div class="container2">
-				<p class="help-block">(PDF o WORD)</p>
-				<form action="#">
-					Carica un CV:
-					<div class="input-file-container">
-						<input class="input-file" id="my-file" type="file" name="pathCv">
-						<label tabindex="0" for="my-file" class="input-file-trigger">Scegli
-							un file </label>
-					</div>
-					<p class="file-return"></p>
-				</form>
-			</div>
-		</form>
-
-		<br> <a><input type="submit" class="forward"
-			value="AVANTI &nbsp; >>" /><input type="hidden" name="surname"
-			value="surname">
-		</td></a> <a href="CandidateListServlet"><< &nbsp; TORNA INDIETRO</a>
-	</div>
-
+	<!-- 	<div class="container"> -->
+	<form action="candidateCreateServlet" method="post"
+		enctype="multipart/form-data">
+		<p>
+			Nome:<br> <input class="name" type="text" name="name" />
+		</p>
+		<p>
+			Cognome:<br> <input class="name" type="text" name="surname" />
+		</p>
+		<p>
+			Data di Nascita:<br> <input type="date" name="dateOfBirth" />
+		</p>
+		<p>
+			Qualificazione:<br> <input id="qualification" type="text"
+				name="qualification" />
+		</p>
+		<p class="help-block">(PDF o WORD)</p>
+		Carica un CV: <input class="input-file" id="my-file" type="file"
+			name="pathCv" size="60" accept=".pdf,.docx,.doc"> <label
+			tabindex="0" for="my-file" class="input-file-trigger">Scegli
+			un file </label>
+		<p class="file-return"></p>
+		<input type="submit" class="forward" value="AVANTI &nbsp; >>" /><input
+			type="hidden" name="surname" value="surname"> <input
+			type="hidden" name="username" value="${username}">
+	</form>
+	<br>
+	<a href="CandidateListServlet"><< &nbsp; TORNA INDIETRO</a>
+	<!-- 	</div> -->
 </body>
 </html>

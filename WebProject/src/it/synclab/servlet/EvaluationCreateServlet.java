@@ -29,10 +29,10 @@ public class EvaluationCreateServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
-		
 
 		if (request.getAttribute("firstTime") != null) {
 			int idCandidate = (Integer) request.getAttribute("idCandidate");
+			String user = (String) request.getAttribute("username");
 			String surname = request.getParameter("surname");
 			IEvaluationFormService efService = CandidateFactory.getJPAEvaluationForm();
 			ArrayList<Language> languagesList = new ArrayList<Language>();
@@ -41,18 +41,20 @@ public class EvaluationCreateServlet extends HttpServlet {
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 				request.setAttribute("message", e);
+				request.setAttribute("username", user);
 				request.getRequestDispatcher("/evaluationFormCreate.jsp").forward(request, response);
 			}
+			request.setAttribute("username", user);
 			request.setAttribute("languagesList", languagesList);
 			request.setAttribute("idCandidate", idCandidate);
 			request.setAttribute("surname", surname);
 			request.getRequestDispatcher("/evaluationFormCreate.jsp").forward(request, response);
-			
+
 		} else {
 
 			int idCandidate = Integer.parseInt(request.getParameter("idCandidate"));
 			String surname = request.getParameter("surname");
-
+			String user = (String) request.getAttribute("user");
 			IEvaluationFormService efService = CandidateFactory.getJPAEvaluationForm();
 			EvaluationForm eform = new EvaluationForm();
 			EvaluationForm currentEform = new EvaluationForm();
@@ -63,6 +65,7 @@ public class EvaluationCreateServlet extends HttpServlet {
 				languagesList = efService.getLanguagesList();
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
+				request.setAttribute("username", user);
 				request.setAttribute("message", e);
 				request.getRequestDispatcher("/evaluationFormCreate.jsp").forward(request, response);
 			}
@@ -77,13 +80,14 @@ public class EvaluationCreateServlet extends HttpServlet {
 				eform.setMotivazioni(request.getParameter("motivation"));
 				eform.setTransfer(request.getParameter("transfer"));
 				eform.setAvailability(request.getParameter("availability"));
-				
-//				 <%=request.getParameter("item_" + count.index)%>
+
+				// <%=request.getParameter("item_" + count.index)%>
 				for (int i = 0; i < languagesList.size(); i++) {
 					lang = new Candidate_Languages();
 					lang.setIdCandidate(idCandidate);
 					lang.setIdLanguage(languagesList.get(i).getIdLanguage());
-					lang.setLanguageLevel(ParameterUtility.getIntValue(request, "languageLevel_" + languagesList.get(i).getIdLanguage(), 0));
+					lang.setLanguageLevel(ParameterUtility.getIntValue(request,
+							"languageLevel_" + languagesList.get(i).getIdLanguage(), 0));
 					spokenLanguages.add(lang);
 				}
 
@@ -94,17 +98,17 @@ public class EvaluationCreateServlet extends HttpServlet {
 				IEvaluationFormService eformService = CandidateFactory.getJPAEvaluationForm();
 				eformService.create(eform);
 				eformService.persistSpokenLang(spokenLanguages);
-				
-				//efService.create(eform, spokenLanguages);
 				currentEform = eformService.read(idCandidate);
 
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
+				request.setAttribute("username", user);
 				request.setAttribute("message", e);
 				request.getRequestDispatcher("/evaluationFormCreate.jsp").forward(request, response);
 			}
 
 			if (currentEform != null) {
+				request.setAttribute("username", user);
 				request.setAttribute("message",
 						"Scheda di valutazione ID Candidato " + idCandidate + " salvata con successo!");
 				request.setAttribute("languagesList", languagesList);
@@ -114,6 +118,7 @@ public class EvaluationCreateServlet extends HttpServlet {
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/SkillsCreateServlet");
 				rd.forward(request, response);
 			} else {
+				request.setAttribute("username", user);
 				request.setAttribute("message", "ERRORE: Creazione Scheda di valutazione non riuscita");
 				request.getRequestDispatcher("/evaluationFormCreate.jsp").forward(request, response);
 			}
@@ -124,21 +129,21 @@ public class EvaluationCreateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		int idCandidate = (Integer) request.getAttribute("idCandidate");
-
+		String user = (String) request.getAttribute("username");
 		IEvaluationFormService efService = CandidateFactory.getJPAEvaluationForm();
 		ArrayList<Language> languagesList = new ArrayList<Language>();
 		try {
 			languagesList = efService.getLanguagesList();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+			request.setAttribute("username", user);
 			request.setAttribute("message", e);
 			request.getRequestDispatcher("/evaluationFormCreate.jsp").forward(request, response);
 		}
-
+		request.setAttribute("username", user);
 		request.setAttribute("languagesList", languagesList);
 		request.setAttribute("idCandidate", idCandidate);
 		request.getRequestDispatcher("/evaluationFormCreate.jsp").forward(request, response);
-
 	}
 
 }

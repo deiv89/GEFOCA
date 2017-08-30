@@ -3,6 +3,8 @@ package it.synclab.business;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -28,6 +30,7 @@ public class Candidate_Skills {
 	
 	@Transient
 	private String categorySkill;
+	
 	
 	
 	public int getIdCandidate() {

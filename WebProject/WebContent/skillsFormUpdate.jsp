@@ -10,11 +10,14 @@
 <title>Candidature WebApp</title>
 </head>
 <body>
-	<% //allow access only if session exists 
-	String user = null; 
-	if(session.getAttribute("user") == null) {
-	response.sendRedirect("loginSignup.jsp"); } else user = (String)
-	session.getAttribute("user"); %>
+	<%
+		//allow access only if session exists 
+		String user = null;
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("loginSignup.jsp");
+		} else
+			user = (String) session.getAttribute("user");
+	%>
 	<h1>Skills Matrix Candidato</h1>
 	<p>
 		<strong>${username} <a href="LogOut">LOGOUT</a></strong>
@@ -35,17 +38,22 @@
 								value="CATEGORIA ${skill.idScope.scopeName} LIVELLO ${skill.parameterName}" /></td>
 						<c:set var="valuationLevel"
 							value="valuationLevel_${skill.idSkill}" />
-						<td><c:set var="idSlot" value="${skill.idSkill-1}"/>
-						<input class="radio" id="0" type="radio"
-							name="${valuationLevel}" value="0" ${skillsList[idSlot].valuationLevel== '0'?'checked':''}><label for="0"><span></span>0</label>
-							<input class="radio" id="1" type="radio" name="${valuationLevel}"
-							value="1"><label for="1"><span></span>1</label> <input
-							class="radio" id="2" type="radio" name="${valuationLevel}"
-							value="2"><label for="2"><span></span>2</label> <input
-							class="radio" id="3" type="radio" name="${valuationLevel}"
-							value="3"><label for="3"><span></span>3</label> <input
-							class="radio" id="4" type="radio" name="${valuationLevel}"
-							value="4"><label for="4"><span></span>4</label></td>
+						<td><c:set var="idSlot" value="${skill.idSkill-1}" /> <input
+							class="radio" type="radio" name="${valuationLevel}"
+							value="0" ${candidateSkills[idSlot].valuationLevel== '0'?'checked':''}><label
+							for="0"><span></span>0</label> <input class="radio"
+							type="radio" name="${valuationLevel}" value="1"
+							${candidateSkills[idSlot].valuationLevel== '1'?'checked':''}><label
+							for="1"><span></span>1</label> <input class="radio"
+							type="radio" name="${valuationLevel}" value="2"
+							${candidateSkills[idSlot].valuationLevel== '2'?'checked':''}><label
+							for="2"><span></span>2</label> <input class="radio"
+							type="radio" name="${valuationLevel}" value="3"
+							${candidateSkills[idSlot].valuationLevel== '3'?'checked':''}><label
+							for="3"><span></span>3</label> <input class="radio"
+							type="radio" name="${valuationLevel}" value="4"
+							${candidateSkills[idSlot].valuationLevel== '4'?'checked':''}><label
+							for="4"><span></span>4</label></td>
 					</tr>
 				</c:forEach>
 				<input type="hidden" name="idCandidate" value="${idCandidate}">

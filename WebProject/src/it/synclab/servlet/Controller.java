@@ -41,7 +41,7 @@ public class Controller extends HttpServlet {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/loginSignup.jsp");
 			rd.forward(request, response);
 		} else {
-			Object message = request.getAttribute("message");
+			//Object message = request.getAttribute("message");
 			IUserService userService = CandidateFactory.getJPAUser();
 			ArrayList<User> userList = new ArrayList<User>();
 			String username = request.getParameter("userName");
@@ -68,6 +68,7 @@ public class Controller extends HttpServlet {
 				if (userList.size() > 0) {
 					if (userList.get(0).getPassWord().equals(password)) {
 						request.setAttribute("username", userList.get(0).getUserName());
+						request.setAttribute("welcomeMessage", "Benvenuto "+ userList.get(0).getUserName() + " nel portale Candidature");
 						RequestDispatcher rd = getServletContext().getRequestDispatcher("/CandidateListServlet");
 						rd.forward(request, response);
 					} else {

@@ -22,12 +22,12 @@
 		} else
 			user = (String) session.getAttribute("user");
 	%>
-	
+
 	<h1>GESTIONE CANDIDATURE</h1>
 	<p>
-		<strong>${messageUsername}</strong> <strong>Benvenuto
-			${username} nel portale Candidature</strong> <strong>${username} <a
-			href="LogOut">LOGOUT</a></strong>
+		<strong>${message}</strong> <strong>${welcomeMessage}</strong> <strong>${username}
+			<a href="LogOut">LOGOUT</a>
+		</strong>
 	</p>
 	<div class="line"></div>
 	<br>
@@ -48,7 +48,7 @@
 		</fieldset>
 		<br>
 		<div class="new">
-			<a href="CandidateCreateServlet"><span class="fa fa-user"></span>&nbsp;
+			<a href="CandidateCreateServlet?user=${username}"><span class="fa fa-user"></span>&nbsp;
 				CREA NUOVO CANDIDATO</a>
 		</div>
 		<br>

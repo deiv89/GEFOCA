@@ -27,15 +27,17 @@ public class OriginCreateServlet extends HttpServlet {
 		response.setContentType("text/html");
 		if (request.getAttribute("firstTime") != null) {
 			String surname = request.getParameter("surname");
+			String username = (String) request.getAttribute("username");
 			int idCandidate = (Integer) request.getAttribute("idCandidate");
 			request.setAttribute("idCandidate", idCandidate);
 			request.setAttribute("surname", surname);
+			request.setAttribute("username", username);
 			request.getRequestDispatcher("/originCreate.jsp").forward(request, response);
 		} else {
 			IOriginService originService = CandidateFactory.getJPAOrigin();
 			Origin origin = new Origin();
 			Origin currentOrigin = null;
-
+			String username = (String) request.getAttribute("username");
 			try {
 				origin.setDescription(request.getParameter("description"));
 				origin.setAddress(request.getParameter("address"));
@@ -53,12 +55,14 @@ public class OriginCreateServlet extends HttpServlet {
 
 				if (currentOrigin != null) {
 					request.setAttribute("surname", surname);
+					request.setAttribute("username", username);
 					request.setAttribute("message", "Candidato " + surname + " salvato con successo!");
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/CandidateListServlet");
 					rd.forward(request, response);
 				}
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
+				request.setAttribute("username", username);
 				request.setAttribute("message", "ERRORE: Creazione canale provenienza non riuscita");
 				request.getRequestDispatcher("/originCreate.jsp").forward(request, response);
 			}

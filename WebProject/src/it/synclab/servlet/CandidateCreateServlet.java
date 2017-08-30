@@ -36,12 +36,13 @@ public class CandidateCreateServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		//boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-
 		response.setContentType("text/html");
-
+ 
 		ICandidateService candidateService = CandidateFactory.getJPACandidate();
 		Candidate candidate = new Candidate();
 		Candidate currentCandidate = new Candidate();
+		String user = (String) request.getAttribute("user");
+		String user1 = (String) request.getParameter("user");
 		try {
 			String name = null;
 			String surname = null;
@@ -101,6 +102,7 @@ public class CandidateCreateServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("messageFile", "Non hai caricato il CV!");
+			request.setAttribute("username", user);
 			//request.setAttribute("message", e);
 			request.getRequestDispatcher("/candidateCreate.jsp").forward(request, response);
 		}
@@ -109,6 +111,7 @@ public class CandidateCreateServlet extends HttpServlet {
 			request.setAttribute("message", "Candidato " + candidate.getSurname() + " salvato con successo!");
 			// File uploaded successfully
 			request.setAttribute("messageFile", "CV caricato con successo!");
+			request.setAttribute("username", user);
 			request.setAttribute("idCandidate", currentCandidate.getIdCandidate());
 			request.setAttribute("surname", currentCandidate.getSurname());
 			request.setAttribute("firstTime", "yes");
@@ -116,6 +119,7 @@ public class CandidateCreateServlet extends HttpServlet {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/EvaluationCreateServlet");
 			rd.forward(request, response);
 		} else {
+			request.setAttribute("username", user);
 			request.setAttribute("message", "ERRORE: Creazione candidato non riuscita");
 			request.getRequestDispatcher("/candidateCreate.jsp").forward(request, response);
 		}
@@ -123,6 +127,10 @@ public class CandidateCreateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		response.setContentType("text/html");
+		
+		String user = (String) request.getParameter("user");
+		request.setAttribute("username", user);
 		request.getRequestDispatcher("/candidateCreate.jsp").forward(request, response);
 	}
 	
