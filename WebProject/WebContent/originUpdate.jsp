@@ -10,11 +10,14 @@
 <title>Candidature WebApp</title>
 </head>
 <body>
-	<% //allow access only if session exists 
-	String user = null; 
-	if(session.getAttribute("user") == null) {
-	response.sendRedirect("loginSignup.jsp"); } else user = (String)
-	session.getAttribute("user"); %>
+	<%
+		//allow access only if session exists 
+		String user = null;
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("loginSignup.jsp");
+		} else
+			user = (String) session.getAttribute("user");
+	%>
 	<h1>Canale di provenienza</h1>
 	<p>
 		<strong>${username} <a href="LogOut">LOGOUT</a></strong>
@@ -30,24 +33,21 @@
 			<p>
 				Descrizione:<br> <input type="text" class="name"
 					name="description" value="${origin.description}" />
-				</td>
 			</p>
 			<p>
 				Indirizzo:<br> <input type="text" class="name" name="address"
 					value="${origin.address}" />
-				</td>
 			</p>
 			<p>
 				Telefono:<br> <input type="text" class="name" name="phone"
 					value="${origin.phone}" />
-				</td>
 			</p>
-			<input type="hidden" name="surname" value="${surname}"> <input
+			<input type="submit" value="SALVA MODIFICHE" /> <input type="hidden"
+				name="surname" value="${surname}"><input type="hidden"
+				name="idCandidate" value="${idCandidate}"> <input
 				type="hidden" name="idOrigin" value="${idOrigin}">
-			</td>
-			</td>
 		</form>
-		<br> <input type="submit" value="SALVA MODIFICHE" /> <a
+		<br> <a
 			href="CandidateDetailServlet?idCandidate=${idCandidate}&surname=${surname}&idOrigin=${idOrigin}"><<
 			&nbsp; TORNA INDIETRO</a>
 	</div>

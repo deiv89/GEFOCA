@@ -11,12 +11,15 @@
 	href="resources/css/skillsCreateCSS.css">
 </head>
 <body>
-	<% //allow access only if session exists 
-	String user = null; 
-	if(session.getAttribute("user") == null) {
-	response.sendRedirect("loginSignup.jsp"); } else user = (String)
-	session.getAttribute("user"); %>
-	
+	<%
+		//allow access only if session exists 
+		String user = null;
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("loginSignup.jsp");
+		} else
+			user = (String) session.getAttribute("user");
+	%>
+
 	<h1>Skills Matrix Candidato</h1>
 	<p>
 		<strong>${username} <a href="LogOut">LOGOUT</a></strong>
@@ -49,12 +52,13 @@
 							value="4"><label for="4"><span></span>4</label></td>
 					</tr>
 				</c:forEach>
+				<br>
+				<input type="submit" value="AVANTI &nbsp; >>" />
+				<a href="/CandidateListServlet"><< &nbsp; TORNA INDIETRO</a>
 				<input type="hidden" name="idCandidate" value="${idCandidate}">
 				<input type="hidden" name="surname" value="${surname}">
 			</table>
 		</form>
-		<br> <input type="submit" value="AVANTI &nbsp; >>" /> <a
-			href="/CandidateListServlet"><< &nbsp; TORNA INDIETRO</a>
 	</div>
 </body>
 </html>

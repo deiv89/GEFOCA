@@ -53,7 +53,7 @@
 				Comunicazione: </strong> ${evaluationForm.levelComunication}<br> <strong>Livello
 				Dinamicità: </strong> ${evaluationForm.levelDynamicity}<br> <strong>Esperienze:
 			</strong> ${evaluationForm.experience}<br> <strong>Motivazioni:
-			</strong>< ${evaluationForm.motivazioni}<br> <strong>Disponibile
+			</strong> ${evaluationForm.motivazioni}<br> <strong>Disponibile
 				a Trasferte: </strong> ${evaluationForm.transfer}<br> <strong>Lingue
 				conosciute: </strong>
 			<c:forEach items="${spokenLanguages}" var="candidateLang"

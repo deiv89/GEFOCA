@@ -43,13 +43,12 @@
 				Qualificazione:<br> <input type="text" id="qualification"
 					name="qualification" value="${candidate.qualification}" />
 			</p>
-			<input type="hidden" name="idCandidate"
+			<br> <a><input type="submit" value="SALVA MODIFICA" /></a> <a
+				href="CandidateDetailServlet?surname=${candidate.surname}&idCandidate=${candidate.idCandidate}&idOrigin=${candidate.idOrigin}"><<
+				&nbsp; TORNA INDIETRO</a> <input type="hidden" name="idCandidate"
 				value="${candidate.idCandidate}" /> <input type="hidden"
 				name="idOrigin" value="${candidate.idOrigin}" />
 		</form>
-		<br> <a><input type="submit" value="SALVA MODIFICA" /></a> <a
-			href="CandidateDetailServlet?surname=${candidate.surname}&idCandidate=${candidate.idCandidate}&idOrigin=${candidate.idOrigin}"><<
-			&nbsp; TORNA INDIETRO</a>
 	</div>
 </body>
 </html>

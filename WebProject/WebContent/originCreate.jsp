@@ -10,11 +10,14 @@
 <title>Candidature WebApp</title>
 </head>
 <body>
-	<% //allow access only if session exists 
-	String user = null; 
-	if(session.getAttribute("user") == null) {
-	response.sendRedirect("loginSignup.jsp"); } else user = (String)
-	session.getAttribute("user"); %>
+	<%
+		//allow access only if session exists 
+		String user = null;
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("loginSignup.jsp");
+		} else
+			user = (String) session.getAttribute("user");
+	%>
 	<h1>Canale di provenienza</h1>
 	<p>
 		<strong>${username} <a href="LogOut">LOGOUT</a></strong>
@@ -37,11 +40,11 @@
 			<p>
 				Telefono:<br> <input type="text" class="name" name="phone" />
 			</p>
-			<input type="hidden" name="surname" value="${surname}"> <input
+			<br> <input type="submit" value="SALVA" /> <a
+				href="CandidateListServlet"><< &nbsp; TORNA INDIETRO</a> <input
+				type="hidden" name="surname" value="${surname}"> <input
 				type="hidden" name="idCandidate" value="${idCandidate}">
 		</form>
-		<br> <input type="submit" value="SALVA" /> <a
-			href="CandidateListServlet"><< &nbsp; TORNA INDIETRO</a>
 	</div>
 </body>
 </html>

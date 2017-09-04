@@ -136,7 +136,7 @@
 			<p>
 				Trasferte:<br> <input type="radio" name="transfer" value="SI"
 					${eform.transfer== 'SI'?'checked':''} />SI <input type="radio"
-					name="transfer" value="NO" ${eform.transfer== 'SI'?'checked':''} />NO
+					name="transfer" value="NO" ${eform.transfer== 'NO'?'checked':''} />NO
 			</p>
 			<p>
 			Lingue Conosciute:<br>

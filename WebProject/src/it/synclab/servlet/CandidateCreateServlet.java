@@ -29,9 +29,11 @@ public class CandidateCreateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private final String UPLOAD_DIRECTORY = "D:/CORSO/UploadedFiles/";
 
+	@Override
 	public void init() {
 	}
 
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -41,8 +43,7 @@ public class CandidateCreateServlet extends HttpServlet {
 		ICandidateService candidateService = CandidateFactory.getJPACandidate();
 		Candidate candidate = new Candidate();
 		Candidate currentCandidate = new Candidate();
-		String user = (String) request.getAttribute("user");
-		String user1 = (String) request.getParameter("user");
+		
 		try {
 			String name = null;
 			String surname = null;
@@ -100,6 +101,8 @@ public class CandidateCreateServlet extends HttpServlet {
 			candidateService.create(candidate);
 			currentCandidate = candidateService.read(candidate.getIdCandidate());
 		} catch (Exception e) {
+			String user = (String) request.getAttribute("username");
+			//String user1 = request.getParameter("user");
 			e.printStackTrace();
 			request.setAttribute("messageFile", "Non hai caricato il CV!");
 			request.setAttribute("username", user);
@@ -108,6 +111,8 @@ public class CandidateCreateServlet extends HttpServlet {
 		}
 
 		if (currentCandidate.getSurname() != null) {
+			String user = (String) request.getAttribute("username");
+			//String user1 = request.getParameter("user");
 			request.setAttribute("message", "Candidato " + candidate.getSurname() + " salvato con successo!");
 			// File uploaded successfully
 			request.setAttribute("messageFile", "CV caricato con successo!");
@@ -119,17 +124,19 @@ public class CandidateCreateServlet extends HttpServlet {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/EvaluationCreateServlet");
 			rd.forward(request, response);
 		} else {
+			String user = (String) request.getAttribute("username");
 			request.setAttribute("username", user);
 			request.setAttribute("message", "ERRORE: Creazione candidato non riuscita");
 			request.getRequestDispatcher("/candidateCreate.jsp").forward(request, response);
 		}
 	}
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
 		
-		String user = (String) request.getParameter("user");
+		String user = request.getParameter("user");
 		request.setAttribute("username", user);
 		request.getRequestDispatcher("/candidateCreate.jsp").forward(request, response);
 	}

@@ -39,31 +39,32 @@
 						<c:set var="valuationLevel"
 							value="valuationLevel_${skill.idSkill}" />
 						<td><c:set var="idSlot" value="${skill.idSkill-1}" /> <input
-							class="radio" type="radio" name="${valuationLevel}"
-							value="0" ${candidateSkills[idSlot].valuationLevel== '0'?'checked':''}><label
-							for="0"><span></span>0</label> <input class="radio"
-							type="radio" name="${valuationLevel}" value="1"
+							class="radio" type="radio" name="${valuationLevel}" value="0"
+							${candidateSkills[idSlot].valuationLevel== '0'?'checked':''}><label
+							for="0"><span></span>0</label> <input class="radio" type="radio"
+							name="${valuationLevel}" value="1"
 							${candidateSkills[idSlot].valuationLevel== '1'?'checked':''}><label
-							for="1"><span></span>1</label> <input class="radio"
-							type="radio" name="${valuationLevel}" value="2"
+							for="1"><span></span>1</label> <input class="radio" type="radio"
+							name="${valuationLevel}" value="2"
 							${candidateSkills[idSlot].valuationLevel== '2'?'checked':''}><label
-							for="2"><span></span>2</label> <input class="radio"
-							type="radio" name="${valuationLevel}" value="3"
+							for="2"><span></span>2</label> <input class="radio" type="radio"
+							name="${valuationLevel}" value="3"
 							${candidateSkills[idSlot].valuationLevel== '3'?'checked':''}><label
-							for="3"><span></span>3</label> <input class="radio"
-							type="radio" name="${valuationLevel}" value="4"
+							for="3"><span></span>3</label> <input class="radio" type="radio"
+							name="${valuationLevel}" value="4"
 							${candidateSkills[idSlot].valuationLevel== '4'?'checked':''}><label
 							for="4"><span></span>4</label></td>
 					</tr>
 				</c:forEach>
+				<input type="submit" value="SALVA MODIFICA" />
 				<input type="hidden" name="idCandidate" value="${idCandidate}">
 				<input type="hidden" name="idOrigin" value="${idOrigin}">
 				<input type="hidden" name="surname" value="${surname}">
 			</table>
 		</form>
-		<br> <input type="submit" value="SALVA MODIFICA" /> <a
-			href="CandidateDetailServlet?idCandidate=${idCandidate}&surname=${surname}&idOrigin=${idOrigin}"><<
-			&nbsp; TORNA INDIETRO</a>
 	</div>
+	<a
+		href="CandidateDetailServlet?idCandidate=${idCandidate}&surname=${surname}&idOrigin=${idOrigin}"><<
+		&nbsp; TORNA INDIETRO</a>
 </body>
 </html>

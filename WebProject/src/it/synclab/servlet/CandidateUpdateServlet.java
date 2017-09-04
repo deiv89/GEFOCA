@@ -31,10 +31,10 @@ public class CandidateUpdateServlet extends HttpServlet {
 		ICandidateService candidateService = CandidateFactory.getJPACandidate();
 		Candidate candidate = new Candidate();
 		Candidate currentCandidate = new Candidate();
-		
+
 		try {
-			candidate.setName(request.getParameter("name"));
-			candidate.setSurname(request.getParameter("surname"));
+			candidate.setName(capitalise(request.getParameter("name")));
+			candidate.setSurname(capitalise(request.getParameter("surname")));
 			candidate.setDateOfBirth(request.getParameter("dateOfBirth"));
 			candidate.setQualification(request.getParameter("qualification"));
 			candidate.setIdCandidate(Integer.parseInt(request.getParameter("idCandidate")));
@@ -65,12 +65,12 @@ public class CandidateUpdateServlet extends HttpServlet {
 
 		response.setContentType("text/html");
 
-		//String candidateSurname = request.getParameter("surname");
+		// String candidateSurname = request.getParameter("surname");
 		int idCandidate = Integer.parseInt(request.getParameter("idCandidate"));
 
 		ICandidateService candidateService = CandidateFactory.getJPACandidate();
 		Candidate candidate = new Candidate();
-		
+
 		try {
 			candidate = candidateService.read(idCandidate);
 		} catch (ClassNotFoundException | EmptyCandidateListException | SQLException | CandidateNotFoundException e) {
@@ -79,9 +79,13 @@ public class CandidateUpdateServlet extends HttpServlet {
 		}
 
 		request.setAttribute("candidate", candidate);
-		
+
 		request.getRequestDispatcher("/candidateUpdate.jsp").forward(request, response);
 
+	}
+
+	public static String capitalise(final String word) {
+		return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
 	}
 
 }

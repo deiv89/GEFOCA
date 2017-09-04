@@ -23,9 +23,7 @@
 	<br>
 	<br>
 	<div class="container">
-		<strong>${message}</strong>
-		</p>
-		<strong>${messageFile}</strong> <br>
+		<strong>${message}</strong> <strong>${messageFile}</strong> <br>
 		<form action="evaluationCreateServlet" method="post">
 			<p>
 				Nome Intervistatore:<br> <input type="text"
@@ -49,7 +47,7 @@
 			</p>
 			<hr>
 			<p>
-				Livello Dinamicit&agrave:<br> <input type="radio"
+				Livello Dinamicità:<br> <input type="radio"
 					name="levelDynamicity" value="1">1 <input type="radio"
 					class="radio" name="levelDynamicity" value="2">2 <input
 					type="radio" class="radio" name="levelDynamicity" value="3">3
@@ -95,12 +93,11 @@
 				Disponibile dalla data:<br> <input type="date"
 					name="availability" />
 			</p>
-			<input type="hidden" name="idCandidate" value="${idCandidate}">
-			<input type="hidden" name="surname" value="${surname}">
-			</td>
+			<br> <input type="submit" value="AVANTI &nbsp; >>" /> <a
+				href="/CandidateListServlet"><< &nbsp; TORNA INDIETRO</a> <input
+				type="hidden" name="idCandidate" value="${idCandidate}"> <input
+				type="hidden" name="surname" value="${surname}">
 		</form>
-		<br> <input type="submit" value="AVANTI &nbsp; >>" /> <a
-			href="/CandidateListServlet"><< &nbsp; TORNA INDIETRO</a>
 	</div>
 </body>
 </html>
