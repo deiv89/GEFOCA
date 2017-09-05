@@ -52,11 +52,11 @@
 							value="4"><label for="4"><span></span>4</label></td>
 					</tr>
 				</c:forEach>
-				<br>
 				<input type="submit" value="AVANTI &nbsp; >>" />
-				<a href="/CandidateListServlet"><< &nbsp; TORNA INDIETRO</a>
+				<a href="/CandidateListServlet"> &nbsp; TORNA INDIETRO</a>
 				<input type="hidden" name="idCandidate" value="${idCandidate}">
 				<input type="hidden" name="surname" value="${surname}">
+				<input type="hidden" name="username" value="${username}">
 			</table>
 		</form>
 	</div>

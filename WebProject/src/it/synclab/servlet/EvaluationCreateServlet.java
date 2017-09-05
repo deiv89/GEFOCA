@@ -32,7 +32,7 @@ public class EvaluationCreateServlet extends HttpServlet {
 
 		if (request.getAttribute("firstTime") != null) {
 			int idCandidate = (Integer) request.getAttribute("idCandidate");
-			String user = (String) request.getAttribute("username");
+			String user = (String) request.getParameter("username");
 			String surname = request.getParameter("surname");
 			IEvaluationFormService efService = CandidateFactory.getJPAEvaluationForm();
 			ArrayList<Language> languagesList = new ArrayList<Language>();
@@ -54,7 +54,7 @@ public class EvaluationCreateServlet extends HttpServlet {
 
 			int idCandidate = Integer.parseInt(request.getParameter("idCandidate"));
 			String surname = request.getParameter("surname");
-			String user = (String) request.getAttribute("user");
+			String user = (String) request.getParameter("username");
 			IEvaluationFormService efService = CandidateFactory.getJPAEvaluationForm();
 			EvaluationForm eform = new EvaluationForm();
 			EvaluationForm currentEform = new EvaluationForm();
@@ -72,7 +72,6 @@ public class EvaluationCreateServlet extends HttpServlet {
 
 			try {
 				eform.setInterviewerName(request.getParameter("interviewerName"));
-				// eform.setLevelPresence(Integer.parseInt(request.getParameter("levelPresence")));
 				eform.setLevelPresence(ParameterUtility.getIntValue(request, "levelPresence", 0));
 				eform.setLevelDynamicity(ParameterUtility.getIntValue(request, "levelDynamicity", 0));
 				eform.setLevelComunication(ParameterUtility.getIntValue(request, "levelComunication", 0));

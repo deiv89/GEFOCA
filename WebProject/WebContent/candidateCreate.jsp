@@ -61,6 +61,5 @@
 	</form>
 	<br>
 	<a href="CandidateListServlet"><< &nbsp; TORNA INDIETRO</a>
-	<!-- 	</div> -->
 </body>
 </html>

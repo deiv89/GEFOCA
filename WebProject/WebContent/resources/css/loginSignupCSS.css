@@ -65,7 +65,6 @@ th {
 }
 
 input[type=text], input[type=password] {
-    background-image: url('searchicon.png');
     padding: 8px 20px;
     margin: 8px 0;
     border: 1px solid #ccc;
@@ -76,6 +75,7 @@ input[type=text], input[type=password] {
     font-size: 15px;
     font-family: "Open Sans";
     background-color: transparent;
+    color: #4CAF50;
 }
 
 input[type=text]:focus  {

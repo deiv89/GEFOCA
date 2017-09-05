@@ -14,13 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.synclab.business.CandidateFactory;
+import it.synclab.business.Movement;
 import it.synclab.business.User;
+import it.synclab.service.IMovementsLogService;
 import it.synclab.service.IUserService;
 
 @WebServlet("/WelcomePage")
 public class Controller extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	private final String action = "Log In";
+	private final String description = "logged In";
 
 	public void init() {
 	}
@@ -67,6 +71,16 @@ public class Controller extends HttpServlet {
 				userList = userService.read(username);
 				if (userList.size() > 0) {
 					if (userList.get(0).getPassWord().equals(password)) {
+						try{
+							IMovementsLogService logService = CandidateFactory.getJPAMovement();
+							Movement mov = new Movement();
+							mov.setIdUser(userList.get(0));
+							mov.setAction(action);
+							mov.setDescription(username + " " + description);
+							logService.create(mov);
+						}catch(Exception ex){
+							ex.printStackTrace();
+						}
 						request.setAttribute("username", userList.get(0).getUserName());
 						request.setAttribute("welcomeMessage", "Benvenuto "+ userList.get(0).getUserName() + " nel portale Candidature");
 						RequestDispatcher rd = getServletContext().getRequestDispatcher("/CandidateListServlet");

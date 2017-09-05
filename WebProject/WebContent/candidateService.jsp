@@ -26,7 +26,7 @@
 	<h1>GESTIONE CANDIDATURE</h1>
 	<p>
 		<strong>${welcomeMessage}</strong> <strong>${username}
-			<a href="LogOut">LOGOUT</a>
+			<a class="log" href="LogOut?user=${username}">LOGOUT</a>
 		</strong>
 	</p>
 	<div class="line"></div>

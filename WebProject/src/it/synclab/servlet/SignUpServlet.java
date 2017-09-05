@@ -13,13 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.synclab.business.CandidateFactory;
+import it.synclab.business.Movement;
 import it.synclab.business.User;
+import it.synclab.service.IMovementsLogService;
 import it.synclab.service.IUserService;
 
 @WebServlet("/SignUpServlet")
 public class SignUpServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
+	
+	private final String action = "Registrazione";
+	private final String description = "Nuova registrazione";
 
 	public void init() {
 	}
@@ -32,7 +37,7 @@ public class SignUpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html");
-		Object message = request.getAttribute("message");
+		//Object message = request.getAttribute("message");
 		IUserService userService = CandidateFactory.getJPAUser();
 		User user = new User();
 		ArrayList<User> userList = new ArrayList<User>();
@@ -69,15 +74,20 @@ public class SignUpServlet extends HttpServlet {
 			e.printStackTrace();
 			request.setAttribute("message", "Username e Password non validi");
 			request.getRequestDispatcher("/signUp.jsp").forward(request, response);
-		} /*
-			 * catch (Exception e) { e.printStackTrace();
-			 * //request.setAttribute("message", e);
-			 * request.getRequestDispatcher("/signUp.jsp").forward(request,
-			 * response); }
-			 */
+		} 
 		ArrayList<User> currentUser = new ArrayList<User>();
 		currentUser = userService.read(capitalise(username));
 		if (currentUser != null && currentUser.size() > 0) {
+			try{
+				IMovementsLogService logService = CandidateFactory.getJPAMovement();
+				Movement mov = new Movement();
+				mov.setIdUser(currentUser.get(0));
+				mov.setAction(action);
+				mov.setDescription(description);
+				logService.create(mov);
+			}catch(Exception ex){
+				ex.printStackTrace();
+			}
 			request.setAttribute("username", currentUser.get(0).getUserName());
 			request.setAttribute("message", "Registrazione avvenuta con successo!");
 			request.setAttribute("fromRegistration", "yes");

@@ -43,7 +43,8 @@
 			<br> <input type="submit" value="SALVA" /> <a
 				href="CandidateListServlet"><< &nbsp; TORNA INDIETRO</a> <input
 				type="hidden" name="surname" value="${surname}"> <input
-				type="hidden" name="idCandidate" value="${idCandidate}">
+				type="hidden" name="idCandidate" value="${idCandidate}"> <input
+				type="hidden" name="username" value="${username}">
 		</form>
 	</div>
 </body>

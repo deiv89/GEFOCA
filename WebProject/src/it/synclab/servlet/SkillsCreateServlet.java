@@ -32,7 +32,7 @@ public class SkillsCreateServlet extends HttpServlet {
 		if (request.getAttribute("firstTime") != null) {
 			int idCandidate = (Integer) request.getAttribute("idCandidate");
 			String surname = request.getParameter("surname");
-			String user = (String) request.getAttribute("username");
+			String user = (String) request.getParameter("username");
 			ISkillsService skillService = CandidateFactory.getJPASkills();
 			ArrayList<Skills> skillsList = new ArrayList<Skills>();
 			try {
@@ -51,7 +51,7 @@ public class SkillsCreateServlet extends HttpServlet {
 		} else {
 			int idCandidate = Integer.parseInt(request.getParameter("idCandidate"));
 			String surname = request.getParameter("surname");
-			String user = (String) request.getAttribute("username");
+			String user = (String) request.getParameter("username");
 			ISkillsService skillService = CandidateFactory.getJPASkills();
 			ArrayList<Skills> skillsList = new ArrayList<Skills>();
 			ArrayList<Candidate_Skills> candidateSkills = new ArrayList<Candidate_Skills>();

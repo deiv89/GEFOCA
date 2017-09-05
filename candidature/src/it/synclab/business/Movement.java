@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Movement {
 	
 	@Id
-	@SequenceGenerator(name="idSeq", sequenceName="SEQ_MOVEMENTS")
+	@SequenceGenerator(name="idSeq", sequenceName="SEQ_MOVEMENTS", allocationSize=1)
 	@GeneratedValue(generator="idSeq", strategy=GenerationType.SEQUENCE)
 	@Column(name = "ID")
 	private int idMovement;
@@ -19,16 +19,15 @@ public class Movement {
 	private User idUser;
 	
 	@Column(name = "ACTION")
-	private String userName;
+	private String action;
 	
 	@Column(name = "DESCRIPTION")
-	private String passWord;
+	private String description;
 	
 	@Column(name = "TS_OPERATION")
-	private Date tsRegistration;
+	private Date tsOperation;
+	
 
-	
-	
 	public int getIdMovement() {
 		return idMovement;
 	}
@@ -45,29 +44,28 @@ public class Movement {
 		this.idUser = idUser;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getAction() {
+		return action;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setAction(String action) {
+		this.action = action;
 	}
 
-	public String getPassWord() {
-		return passWord;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setPassWord(String passWord) {
-		this.passWord = passWord;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Date getTsRegistration() {
-		return tsRegistration;
+	public Date getTsOperation() {
+		return tsOperation;
 	}
 
-	public void setTsRegistration(Date tsRegistration) {
-		this.tsRegistration = tsRegistration;
+	public void setTsOperation(Date tsOperation) {
+		this.tsOperation = tsOperation;
 	}
-	
 	
 }

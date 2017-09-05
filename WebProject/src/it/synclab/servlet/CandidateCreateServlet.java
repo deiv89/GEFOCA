@@ -101,7 +101,7 @@ public class CandidateCreateServlet extends HttpServlet {
 			candidateService.create(candidate);
 			currentCandidate = candidateService.read(candidate.getIdCandidate());
 		} catch (Exception e) {
-			String user = (String) request.getAttribute("username");
+			String user = (String) request.getParameter("username");
 			//String user1 = request.getParameter("user");
 			e.printStackTrace();
 			request.setAttribute("messageFile", "Non hai caricato il CV!");
@@ -109,9 +109,8 @@ public class CandidateCreateServlet extends HttpServlet {
 			//request.setAttribute("message", e);
 			request.getRequestDispatcher("/candidateCreate.jsp").forward(request, response);
 		}
-
 		if (currentCandidate.getSurname() != null) {
-			String user = (String) request.getAttribute("username");
+			String user = (String) request.getParameter("username");
 			//String user1 = request.getParameter("user");
 			request.setAttribute("message", "Candidato " + candidate.getSurname() + " salvato con successo!");
 			// File uploaded successfully
@@ -124,7 +123,7 @@ public class CandidateCreateServlet extends HttpServlet {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/EvaluationCreateServlet");
 			rd.forward(request, response);
 		} else {
-			String user = (String) request.getAttribute("username");
+			String user = (String) request.getParameter("username");
 			request.setAttribute("username", user);
 			request.setAttribute("message", "ERRORE: Creazione candidato non riuscita");
 			request.getRequestDispatcher("/candidateCreate.jsp").forward(request, response);

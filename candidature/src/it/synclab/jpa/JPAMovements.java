@@ -5,26 +5,48 @@ import java.util.ArrayList;
 
 import javax.persistence.*;
 
-import it.synclab.business.User;
+import it.synclab.business.Movement;
 import it.synclab.database.EntityManagerUtil;
-import it.synclab.service.IUserService;
+import it.synclab.service.IMovementsLogService;
 
-public class JPAUser implements IUserService {
+public class JPAMovements implements IMovementsLogService {
 
-	private static JPAUser instance = new JPAUser();
+	private static JPAMovements instance = new JPAMovements();
 
-	public static JPAUser getInstance() {
+	public static JPAMovements getInstance() {
 		if (instance == null)
-			instance = new JPAUser();
+			instance = new JPAMovements();
 		return instance;
 	}
 
-	private JPAUser() {
+	private JPAMovements() {
 	}
 
 	private EntityManager entityManager = EntityManagerUtil.getEntityManager();
 
-	@SuppressWarnings("unchecked")
+	
+	@Override
+	public Movement create(Movement movement) throws ClassNotFoundException, SQLException {
+		try {
+			entityManager.getTransaction().begin();
+			entityManager.createNativeQuery("INSERT INTO MOVEMENTS (id, id_user, action, description, ts_operation) "+
+            "VALUES (SEQ_MOVEMENTS.nextval, :idUser, :action, :descr, CURRENT_TIMESTAMP)").setParameter("idUser", movement.getIdUser()).setParameter("action", movement.getAction()).setParameter("descr", movement.getDescription()).executeUpdate();
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
+		return movement;
+	}
+
+	@Override
+	public ArrayList<Movement> read() {
+		return null;
+	}
+	
+	
+
+	/*@SuppressWarnings("unchecked")
 	@Override
 	public ArrayList<User> read(String userName) {
 		ArrayList<User> userList = new ArrayList<User>();
@@ -53,7 +75,7 @@ public class JPAUser implements IUserService {
 			e.printStackTrace();
 			entityManager.getTransaction().rollback();
 		}
-	}
+	}*/
 	
 	/*@Override
 	public void create(User user) throws ClassNotFoundException, SQLException {

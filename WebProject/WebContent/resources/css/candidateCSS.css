@@ -47,6 +47,9 @@ a:hover, a:active {
   background-color: transparent;
   border: none;
 }
+.log{
+	text-align: right;
+}
 
 .tab:hover{
   color: #555;

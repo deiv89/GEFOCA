@@ -10,11 +10,14 @@
 	href="resources/css/evalFormCreateCSS.css">
 </head>
 <body>
-	<% //allow access only if session exists 
-	String user = null; if
-	(session.getAttribute("user") == null) {
-	response.sendRedirect("loginSignup.jsp"); } else user = (String)
-	session.getAttribute("user"); %>
+	<%
+		//allow access only if session exists 
+		String user = null;
+		if (session.getAttribute("user") == null) {
+			response.sendRedirect("loginSignup.jsp");
+		} else
+			user = (String) session.getAttribute("user");
+	%>
 	<h1>Scheda Valutazione Candidato</h1>
 	<p>
 		<strong>${username} <a href="LogOut">LOGOUT</a></strong>
@@ -94,9 +97,10 @@
 					name="availability" />
 			</p>
 			<br> <input type="submit" value="AVANTI &nbsp; >>" /> <a
-				href="/CandidateListServlet"><< &nbsp; TORNA INDIETRO</a> <input
+				href="/CandidateListServlet"> &nbsp; TORNA INDIETRO</a> <input
 				type="hidden" name="idCandidate" value="${idCandidate}"> <input
-				type="hidden" name="surname" value="${surname}">
+				type="hidden" name="surname" value="${surname}"><input
+				type="hidden" name="username" value="${username}">
 		</form>
 	</div>
 </body>

@@ -2,6 +2,7 @@ package it.synclab.business;
 
 import it.synclab.jpa.JPACandidate;
 import it.synclab.jpa.JPAEvaluationForm;
+import it.synclab.jpa.JPAMovements;
 import it.synclab.jpa.JPAOrigin;
 import it.synclab.jpa.JPASkills;
 import it.synclab.jpa.JPAUser;
@@ -61,6 +62,10 @@ public class CandidateFactory {
 	
 	public static JPAUser getJPAUser(){
 		return JPAUser.getInstance();
+	}
+	
+	public static JPAMovements getJPAMovement(){
+		return JPAMovements.getInstance();
 	}
 
 }
