@@ -56,10 +56,12 @@
 							for="4"><span></span>4</label></td>
 					</tr>
 				</c:forEach>
-				<input type="submit" value="SALVA MODIFICA" />
-				<input type="hidden" name="idCandidate" value="${idCandidate}">
-				<input type="hidden" name="idOrigin" value="${idOrigin}">
-				<input type="hidden" name="surname" value="${surname}">
+				<tr>
+					<td><input type="submit" value="SALVA MODIFICA" /> <input
+						type="hidden" name="idCandidate" value="${idCandidate}"> <input
+						type="hidden" name="idOrigin" value="${idOrigin}"> <input
+						type="hidden" name="surname" value="${surname}"></td>
+				</tr>
 			</table>
 		</form>
 	</div>
