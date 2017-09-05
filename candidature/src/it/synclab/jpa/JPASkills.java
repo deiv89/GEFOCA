@@ -143,12 +143,34 @@ public class JPASkills implements ISkillsService {
 					j++;
 				}
 			entityManager.getTransaction().commit();
-			
 		}catch (Exception e) {
 			e.printStackTrace();
 			entityManager.getTransaction().rollback();
 		}
 	}
+	
+	/*@Override
+	public void update(ArrayList<Candidate_Skills> candidateSkills, int idCandidate)
+			throws ClassNotFoundException, SQLException {
+		try{
+			Session session = SessionFactory.openSession();
+			Transaction tx = session.beginTransaction();
+			//entityManager.getTransaction().begin();
+			@SuppressWarnings("unchecked")
+			ArrayList<Candidate_Skills> currentCandidateSkills = (ArrayList<Candidate_Skills>) entityManager.createQuery("from Candidate_Skills WHERE id_candidate = :idCandidate").setParameter("idCandidate", idCandidate).getResultList();
+			int j = 0;
+			for (int i=0; i<currentCandidateSkills.size(); i++){
+					currentCandidateSkills.get(i).setIdCandidate(idCandidate);
+					currentCandidateSkills.get(i).setIdSkill(candidateSkills.get(j).getIdSkill());
+					currentCandidateSkills.get(i).setValuationLevel(candidateSkills.get(j).getValuationLevel());
+					j++;
+				}
+			entityManager.getTransaction().commit();
+		}catch (Exception e) {
+			e.printStackTrace();
+			entityManager.getTransaction().rollback();
+		}
+	}*/
 	
 
 }
