@@ -48,7 +48,7 @@ a:hover, a:active {
   border: none;
 }
 .log{
-	text-align: right;
+	float: right;
 }
 
 .tab:hover{

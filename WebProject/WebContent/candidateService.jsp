@@ -24,13 +24,14 @@
 	%>
 
 	<h1>GESTIONE CANDIDATURE</h1>
-	<p>
-		<strong>${welcomeMessage}</strong> <strong>${username}
-			<a class="log" href="LogOut?user=${username}">LOGOUT</a>
-		</strong>
-	</p>
+
 	<div class="line"></div>
 	<br>
+	<div class="container">
+		<strong>${welcomeMessage}</strong>  <a
+			class="log" href="LogOut?user=${username}"><strong>${username} LOGOUT</a>
+		</strong>
+	</div>
 	<div class="container">
 		<fieldset>
 			<legend>
@@ -48,8 +49,8 @@
 		</fieldset>
 		<br>
 		<div class="new">
-			<a href="CandidateCreateServlet?user=${username}"><span class="fa fa-user"></span>&nbsp;
-				CREA NUOVO CANDIDATO</a>
+			<a href="CandidateCreateServlet?user=${username}"><span
+				class="fa fa-user"></span>&nbsp; CREA NUOVO CANDIDATO</a>
 		</div>
 		<br>
 		<h2>LISTA CANDIDATI</h2>

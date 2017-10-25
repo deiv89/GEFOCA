@@ -10,9 +10,9 @@
 	rel='stylesheet'>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/inputvalidation.js"></script>
+<!-- <script type="text/javascript" src="resources/js/inputvalidation.js"></script>
 <script type="text/javascript" src="resources/js/inputfile.js"></script>
-
+ -->
 </head>
 <body>
 	<%
@@ -51,9 +51,7 @@
 		</p>
 		<p class="help-block">(PDF o WORD)</p>
 		Carica un CV: <input class="input-file" id="my-file" type="file"
-			name="pathCv" size="60" accept=".pdf,.docx,.doc"> <label
-			tabindex="0" for="my-file" class="input-file-trigger">Scegli
-			un file </label>
+			name="pathCv" size="60" accept=".pdf,.docx,.doc">
 		<p class="file-return"></p>
 		<input type="submit" class="forward" value="AVANTI &nbsp; >>" /><input
 			type="hidden" name="surname" value="surname"> <input

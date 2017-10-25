@@ -111,25 +111,25 @@ input[type=text]:focus {
   width: 150px;
   margin-top: 7px;
 }
-.js .input-file-trigger {
-  display: block;
-  padding: 10px 0;
-  background: #4CAF50;
-  color: #fff;
-  border: 2px solid #4CAF50;
-  font-size: 14px;
-  transition: all .4s;
-  cursor: pointer;
-  text-align: center;
-}
-.js .input-file {
-  position: absolute;
-  top: 0; left: 0;
-  width: 150px;
-  opacity: 0;
-  padding: 14px 0;
-  cursor: pointer;
-}
+/* .js .input-file-trigger { */
+/*   display: block; */
+/*   padding: 10px 0; */
+/*   background: #4CAF50; */
+/*   color: #fff; */
+/*   border: 2px solid #4CAF50; */
+/*   font-size: 14px; */
+/*   transition: all .4s; */
+/*   cursor: pointer; */
+/*   text-align: center; */
+/* } */
+/* .js .input-file { */
+/*   position: absolute; */
+/*   top: 0; left: 0; */
+/*   width: 150px; */
+/*   opacity: 0; */
+/*   padding: 14px 0; */
+/*   cursor: pointer; */
+/* } */
 /*.js .input-file:hover + .input-file-trigger,
 .js .input-file:focus + .input-file-trigger,
 .js .input-file-trigger:hover,
